@@ -21,39 +21,30 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:hint="Enter your Name"
-        android:layout_height="wrap_content" >
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:textColorHint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </com.google.android.material.textfield.TextInputEditText>
+            android:layout_height="wrap_content"></com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <EditText
-        android:id="@+id/uid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:hint="Enter your Name"
-        android:inputType="text"
-        android:textColor="#F3EBEB"
-        android:textColorHint="#EADEDE"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:layout_editor_absoluteX="100dp" />
 
     <EditText
         android:id="@+id/phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="Phone Number"
         android:inputType="phone"
         android:textColorHint="#E8E3E3"
-        app:layout_constraintStart_toStartOf="@+id/uid"
-        app:layout_constraintTop_toBottomOf="@+id/uid" />
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="229dp" />
 
     <EditText
         android:id="@+id/mail"
