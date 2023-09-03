@@ -7,42 +7,47 @@
     android:background="#B571C1"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="132dp"
         android:fontFamily="serif"
         android:text="Login"
         android:textColor="#EFE7E7"
         android:textColorHint="#EDEDED"
         android:textSize="34sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="178dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:textColorHint="#DFDBDB"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber"
-        tools:layout_editor_absoluteX="100dp" />
-
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editTextNumber"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="108dp"
         android:ems="10"
         android:hint="Phone Number"
         android:inputType="number"
         android:textColorHint="#EFE6E6"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteX="100dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColorHint="#DFDBDB"
+        app:layout_constraintStart_toStartOf="@+id/editTextNumber"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
 
     <Button
         android:id="@+id/login_b"
@@ -50,28 +55,31 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Submit"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        tools:layout_editor_absoluteX="160dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="56dp"
         android:text="Don't have an Account?"
         android:textColor="#E3E8E3"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="492dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_b" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Signup"
+        android:layout_width="64dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="56dp"
+        android:text="@string/signup_here"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        tools:layout_editor_absoluteY="492dp" />
+        app:layout_constraintTop_toBottomOf="@+id/login_b" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
