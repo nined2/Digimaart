@@ -10,4 +10,8 @@
     <string name="signup">Signup</string>
     <string name="title_activity_home">Home</string>
     <string name="don_t_have_an_account">Don\'t have an Account?</string>
+    <string name="phoneno">Phone Number</string>
+    <string name="lpass">Password</string>
+    <string name="loginsubmit">Submit</string>
+    <string name="logintext">Login</string>
 </resources>
