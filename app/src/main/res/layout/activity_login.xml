@@ -81,7 +81,7 @@
         app:layout_constraintTop_toBottomOf="@+id/login_b" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewsignup"
         android:layout_width="64dp"
         android:layout_height="30dp"
         android:layout_marginTop="56dp"

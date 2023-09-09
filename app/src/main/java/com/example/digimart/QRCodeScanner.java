@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
-public class BarcodeScanner extends AppCompatActivity {
+public class QRCodeScanner extends AppCompatActivity {
     Button btn_scan;
 
 
@@ -41,7 +41,7 @@ public class BarcodeScanner extends AppCompatActivity {
     {
         if(result.getContents() != null) {
             if (result.getContents().equals("Trolley 1")){
-                AlertDialog.Builder builder = new AlertDialog.Builder(BarcodeScanner.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(QRCodeScanner.this);
                 builder.setTitle("Result");
                 builder.setMessage("Connected to Trolley 1");
 
@@ -57,7 +57,7 @@ public class BarcodeScanner extends AppCompatActivity {
             }
 
             else if (result.getContents().equals("Trolley 2")){
-                AlertDialog.Builder builder = new AlertDialog.Builder(BarcodeScanner.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(QRCodeScanner.this);
                 builder.setTitle("Result");
                 builder.setMessage("Connected to Trolley 2");
 

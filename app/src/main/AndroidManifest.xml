@@ -18,7 +18,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Digimart"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".QRCodeScanner"
+            android:exported="false" />
         <activity
             android:name=".BarcodeScanner"
             android:exported="true">
@@ -31,16 +35,16 @@
         <activity
             android:name=".Login"
             android:exported="true"
-            android:theme="@style/Theme.Digimart" />
+            android:theme="@style/Theme.Digimart"></activity>
         <activity
             android:name=".SignUp"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".CaptureAct"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:stateNotNeeded="true"
             android:theme="@style/zxing_CaptureTheme" />
     </application>
