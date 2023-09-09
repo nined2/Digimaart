@@ -1,6 +1,7 @@
 package com.example.digimart;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -71,6 +72,10 @@ public class Login extends AppCompatActivity {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
                                     if(result.equals("Login Success")){
+                                        SharedPreferences sharedPreferences = getSharedPreferences(Login.PREFS_NAME,0);
+                                        SharedPreferences.Editor editor=sharedPreferences.edit();
+                                        editor.putBoolean("hasLoggedIn",true);
+                                        editor.apply();
                                         Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getApplicationContext(), BarcodeScanner.class);
                                         startActivity(intent);
@@ -88,6 +93,8 @@ public class Login extends AppCompatActivity {
                 else {
                     Toast.makeText(getApplicationContext(), "All fields are required", Toast.LENGTH_SHORT).show();
                 }
+
+
             }
         });
     }

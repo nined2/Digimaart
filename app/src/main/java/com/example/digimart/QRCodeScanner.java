@@ -42,14 +42,14 @@ public class QRCodeScanner extends AppCompatActivity {
         if(result.getContents() != null) {
             if (result.getContents().equals("Trolley 1")){
                 AlertDialog.Builder builder = new AlertDialog.Builder(QRCodeScanner.this);
-                builder.setTitle("Result");
+                builder.setTitle("Scanned");
                 builder.setMessage("Connected to Trolley 1");
 
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), BarcodeScanner.class);
                         startActivity(intent);
                         finish();
                     }
@@ -58,14 +58,14 @@ public class QRCodeScanner extends AppCompatActivity {
 
             else if (result.getContents().equals("Trolley 2")){
                 AlertDialog.Builder builder = new AlertDialog.Builder(QRCodeScanner.this);
-                builder.setTitle("Result");
+                builder.setTitle("Scanned");
                 builder.setMessage("Connected to Trolley 2");
 
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), BarcodeScanner.class);
                         startActivity(intent);
                         finish();
                     }
