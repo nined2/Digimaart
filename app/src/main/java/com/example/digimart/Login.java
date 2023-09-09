@@ -16,7 +16,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 public class Login extends AppCompatActivity {
-
+    public static String PREFS_NAME="MyPrefsFile";
     TextView textViewLogin;
     TextInputEditText textInputEditTextphoneno,textInputEditTextpassword;
     Button loginbutton;

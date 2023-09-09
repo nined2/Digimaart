@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Scan Object Barcode" />
+        android:text="Scan Trolley QR Code" />
 
     <TextView
         android:id="@+id/text_BarcodeScan"
