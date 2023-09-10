@@ -50,11 +50,6 @@
             android:screenOrientation="fullSensor"
             android:stateNotNeeded="true"
             android:theme="@style/zxing_CaptureTheme" />
-
-        <activity
-            android:name=".OTPVerification"
-            android:exported="true">
-        </activity>
     </application>
 
 </manifest>
