@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".OTPVerification">
+
+    <EditText
+        android:id="@+id/mobileET"
+        android:inputType="phone"
+        android:maxLines="1"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:hint="Enter Mobile Number"/>
+    <EditText
+        android:visibility="gone"
+        android:id="@+id/otpET"
+        android:inputType="number"
+        android:maxLines="1"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:hint="Enter OTP"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/actionBTn"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Otp"/>
+
+</LinearLayout>

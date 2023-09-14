@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AlertDialog;
@@ -40,41 +39,19 @@ public class BarcodeScanner extends AppCompatActivity {
     ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result->
     {
         if(result.getContents() != null) {
-            if (result.getContents().equals("Trolley 1")){
-                AlertDialog.Builder builder = new AlertDialog.Builder(BarcodeScanner.this);
-                builder.setTitle("Result");
-                builder.setMessage("Connected to Trolley 1");
+            AlertDialog.Builder builder = new AlertDialog.Builder(BarcodeScanner.this);
+            builder.setTitle("Result");
+            builder.setMessage(result.getContents());
 
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                }).show();
-            }
-
-            else if (result.getContents().equals("Trolley 2")){
-                AlertDialog.Builder builder = new AlertDialog.Builder(BarcodeScanner.this);
-                builder.setTitle("Result");
-                builder.setMessage("Connected to Trolley 2");
-
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                }).show();
-            }
-
-            else {
-                Toast.makeText(getApplicationContext(), "Incorrect QR Code", Toast.LENGTH_SHORT).show();
-            }
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                    Intent intent = new Intent(getApplicationContext(), BarcodeScanner.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }).show();
         }
     });
 }

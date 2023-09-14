@@ -77,7 +77,7 @@ public class Login extends AppCompatActivity {
                                         editor.putBoolean("hasLoggedIn",true);
                                         editor.apply();
                                         Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getApplicationContext(), BarcodeScanner.class);
+                                        Intent intent = new Intent(getApplicationContext(), QRCodeScanner.class);
                                         startActivity(intent);
                                         finish();
                                     }
