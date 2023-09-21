@@ -75,6 +75,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx:24.7.1")
     implementation("com.google.firebase:firebase-auth:22.1.1")
     implementation("com.google.firebase:firebase-messaging:23.2.1")
+    implementation("com.google.firebase:firebase-messaging-ktx:23.2.1")
 
     testImplementation("junit:junit:4.13")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -87,5 +88,11 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
     implementation ("com.google.zxing:core:3.3.0")
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation("com.google.firebase:firebase-auth:22.1.2")// Use the latest version
+    implementation("com.google.firebase:firebase-core:21.1.1")// Use the latest version
+    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation("com.google.firebase:firebase-analytics")
 
 }

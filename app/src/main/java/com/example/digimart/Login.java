@@ -20,7 +20,7 @@ public class Login extends AppCompatActivity {
     public static String PREFS_NAME="MyPrefsFile";
     TextView textViewLogin;
     TextInputEditText textInputEditTextphoneno,textInputEditTextpassword;
-    Button loginbutton;
+    Button loginbutton,forgetpass;
     ProgressBar progress;
 
     @Override
@@ -32,8 +32,7 @@ public class Login extends AppCompatActivity {
         textInputEditTextphoneno = findViewById(R.id.phoneno);
         textInputEditTextpassword = findViewById(R.id.password);
         loginbutton = findViewById(R.id.login_b);
-        progress = findViewById(R.id.progress);
-
+        forgetpass = findViewById(R.id.forgetpass);
 
         textViewLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +67,6 @@ public class Login extends AppCompatActivity {
                             data[1] = password;
                             PutData putData = new PutData("http://192.168.0.106/LogIn-SignUp-master/ulogin.php", "POST", field, data);
                             if (putData.startPut()) {
-                                progress.setVisibility(View.GONE);
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
                                     if(result.equals("Login Success")){
@@ -95,6 +93,14 @@ public class Login extends AppCompatActivity {
                 }
 
 
+            }
+        });
+        forgetpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Forgetpass.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
