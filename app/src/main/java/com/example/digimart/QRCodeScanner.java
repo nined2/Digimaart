@@ -65,6 +65,7 @@ public class QRCodeScanner extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
+
                         Intent intent = new Intent(getApplicationContext(), BarcodeScanner.class);
                         startActivity(intent);
                         finish();
@@ -77,4 +78,6 @@ public class QRCodeScanner extends AppCompatActivity {
             }
         }
     });
+
+
 }

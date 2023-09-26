@@ -17,7 +17,6 @@
         android:inputType="phone"
         android:layout_marginBottom="16dp"/>
 
-
     <Button
         android:id="@+id/sendOTPButton"
         android:layout_width="match_parent"
