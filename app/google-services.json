@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "333600619386",
+    "project_id": "digimart-8865d",
+    "storage_bucket": "digimart-8865d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333600619386:android:4ed0b8e4f35e7262fbf4c3",
+        "android_client_info": {
+          "package_name": "com.example.digimart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqSDVCkjy3P8BrtZKqrn6Yne8_CZhCQX8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
