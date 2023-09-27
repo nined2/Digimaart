@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
                     intent = new Intent(MainActivity.this, QRCodeScanner.class);
                 }
                 else {
-                    intent = new Intent(MainActivity.this, Login.class);
+                    intent = new Intent(MainActivity.this, SignUp.class);
                 }
                 startActivity(intent);
                 finish();

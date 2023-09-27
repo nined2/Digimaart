@@ -70,14 +70,14 @@ public class SignUp extends AppCompatActivity {
                             data[1] = phoneno;
                             data[2] = mail;
                             data[3] = password;
-                            PutData putData = new PutData("http://192.168.56.212/LogIn-SignUp-master/usignup.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.42.35/loginsignup/signup.php", "POST", field, data);
                             if (putData.startPut()) {
                                 progressBar.setVisibility(View.GONE);
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
                                     if(result.equals("Signup Success")){
                                         Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getApplicationContext(), Login.class);
+                                        Intent intent = new Intent(getApplicationContext(), home.class);
                                         startActivity(intent);
                                         finish();
                                     }
