@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LOGIN2">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="1324dp"
+        android:layout_height="282dp"
+        app:srcCompat="@drawable/loginback"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-457dp"
+        tools:layout_editor_absoluteY="511dp" />
+
+    <EditText
+        android:id="@+id/editTextText2"
+        android:layout_width="114dp"
+        android:layout_height="62dp"
+        android:ems="10"
+        android:fontFamily="sans-serif-condensed"
+        android:inputType="text"
+        android:text="LOGIN"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="109dp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="324dp"
+        android:layout_height="147dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/TrolleyLogoPage1"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="440dp" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="458dp"
+        android:layout_height="183dp"
+        app:srcCompat="@drawable/BACKTop"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-24dp"
+        tools:layout_editor_absoluteY="-89dp" />
+
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="291dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        android:textColorHint="#CA0B28"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText2"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="60dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="297dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColorHint="#BF0B0B"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="60dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don't have an Account?? "
+        android:textColor="#090A21 "
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="602dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SIGNUP"
+        android:textColor="#C70039"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="132dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="16dp"
+        android:background="#FF5733 "
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintVertical_bias="0.588"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="139dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

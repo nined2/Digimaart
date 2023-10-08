@@ -9,20 +9,27 @@
     android:padding="16dp"
     tools:context=".OTPVerification">
 
+
     <EditText
         android:id="@+id/phoneNumberEditText"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
         android:hint="Phone Number"
         android:inputType="phone"
-        android:layout_marginBottom="16dp"/>
-
+        android:textColor="	#008000"
+        android:textColorHint="#009688"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/sendOTPButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Send OTP"/>
+        android:background=" #16A085 "
+        android:text="Send OTP"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/otpEditText"
@@ -40,5 +47,11 @@
         android:layout_height="wrap_content"
         android:text="Verify OTP"
         android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="482dp"
+        android:layout_height="622dp"
+        app:srcCompat="@drawable/OtpV" />
 
 </LinearLayout>

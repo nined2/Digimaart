@@ -4,90 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B571C1"
+    android:background="#FFFFFF"
     tools:context=".SignUp">
 
     <TextView
         android:id="@+id/textViewsignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="132dp"
         android:fontFamily="sans-serif-black"
-        android:text="@string/signup"
-        android:textColor="#F4EDED"
+        android:text="SIGNUP"
+        android:textColor="#000000"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/name"
-        android:layout_width="210dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="64dp"
-        android:hint="@string/enter_your_name"
-        android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewsignup" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/phoneno"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="@string/phone_number"
         android:inputType="phone"
-        android:textColorHint="#E8E3E3"
-        app:layout_constraintStart_toStartOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/mail"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="@string/emailid"
-        android:inputType="textEmailAddress"
-        android:textColorHint="#EDE8E8"
-        app:layout_constraintStart_toStartOf="@+id/phoneno"
-        app:layout_constraintTop_toBottomOf="@+id/phoneno"
-        tools:ignore="MissingConstraints" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:textColorHint="#E1D3D3"
-        app:layout_constraintStart_toStartOf="@+id/mail"
-        app:layout_constraintTop_toBottomOf="@+id/mail" />
-
-    <ProgressBar
-        android:id="@+id/progressbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"/>
+        android:textColorHint="#AA0728"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="302dp" />
 
     <Button
         android:id="@+id/signup_b"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:background=" #C70039"
         android:text="@string/submit"
+        android:textColor="@color/white"
+        android:textColorHighlight="#F8F4F4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="511dp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -96,7 +54,7 @@
         android:layout_marginStart="52dp"
         android:layout_marginTop="28dp"
         android:text="Already have an account??"
-        android:textColor="#E3E8E3"
+        android:textColor="#0C0C0C"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup_b" />
@@ -106,9 +64,101 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="@string/loginhere"
+        android:text="LOGIN"
+        android:textColor="#B10C0C"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintStart_toEndOf="@+id/textView2" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="519dp"
+        android:layout_height="208dp"
+        app:srcCompat="@drawable/BACKTop"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-54dp"
+        tools:layout_editor_absoluteY="-91dp" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColorHint="#950B0B"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="378dp" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/Backbottomlogin"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="619dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Paaword"
+        android:inputType="textPassword"
+        android:textColorHint="#971111"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="444dp" />
+
+    <EditText
+        android:id="@+id/editTextText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="text"
+        android:textColorHint="#A10C0C"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="240dp" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="42dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/email"
+        tools:layout_editor_absoluteX="90dp"
+        tools:layout_editor_absoluteY="383dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="45dp"
+        android:layout_height="42dp"
+        app:srcCompat="@drawable/pass"
+        tools:layout_editor_absoluteX="90dp"
+        tools:layout_editor_absoluteY="447dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="35dp"
+        android:layout_height="42dp"
+        app:srcCompat="@drawable/user"
+        tools:layout_editor_absoluteX="90dp"
+        tools:layout_editor_absoluteY="243dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="50dp"
+        android:layout_height="46dp"
+        app:srcCompat="@drawable/phone"
+        tools:layout_editor_absoluteX="89dp"
+        tools:layout_editor_absoluteY="310dp"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
