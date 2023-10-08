@@ -18,7 +18,7 @@
         android:layout_marginTop="59dp"
         android:layout_marginEnd="45dp"
         android:background="#96DED1"
-        android:text="Scan Object Barcode"
+        android:text="@string/scan_object_barcode"
         android:textColorHint="#4A8DAC"
         android:textSize="20sp"
         android:textStyle="bold" />
