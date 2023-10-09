@@ -64,7 +64,7 @@
             android:inputType="textPersonName"
             android:textColorHint="@color/white" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/login_b"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
