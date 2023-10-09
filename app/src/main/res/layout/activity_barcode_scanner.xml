@@ -4,23 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#C5BBE3"
+    android:background="#d8f9ff"
     tools:context=".BarcodeScanner">
 
     <Button
         android:id="@+id/btn_scan"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="74dp"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="111dp"
-        android:layout_marginEnd="118dp"
-        android:layout_marginBottom="635dp"
-        android:text="Scan Object Barcode" />
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="45dp"
+        android:background="#96DED1"
+        android:text="@string/scan_object_barcode"
+        android:textColorHint="#4A8DAC"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:id="@+id/imageView20"
+        android:layout_width="match_parent"
+        android:layout_height="654dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="219dp"
+        android:layout_marginEnd="-3dp"
+        android:layout_marginBottom="-27dp"
+        app:srcCompat="@drawable/Tbarcode" />
 
 </RelativeLayout>

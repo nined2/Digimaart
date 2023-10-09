@@ -1,8 +1,6 @@
 package com.example.digimart;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,10 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
@@ -70,7 +66,6 @@ public class OTPVerification extends AppCompatActivity {
                                 sendOTPButton.setVisibility(View.GONE);
                                 verifyOTPButton.setVisibility(View.VISIBLE);
                             }
-
                         }
                 );
             }
@@ -80,48 +75,30 @@ public class OTPVerification extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String otp = otpEditText.getText().toString().trim();
-
-                if (!TextUtils.isEmpty(otp)) {
-                    // Create the PhoneAuthCredential with the verificationId and OTP
-                    PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, otp);
-
-                    // Sign in with the credential
-                    signInWithPhoneAuthCredential(credential);
-                } else {
-                    // Show an error message if the OTP field is empty
-                    Toast.makeText(OTPVerification.this, "Please enter the OTP", Toast.LENGTH_SHORT).show();
-                }
+                PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, otp);
+                signInWithPhoneAuthCredential(credential);
             }
         });
-
-
     }
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(this, new OnCompleteListener() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                    public void onComplete(@NonNull Task task) {
                         if (task.isSuccessful()) {
-                            // Sign-in success, update UI with the signed-in user's information
-                            FirebaseUser user = task.getResult().getUser();
+                            // Sign in success, update UI with the signed-in user's information.
                             Toast.makeText(OTPVerification.this, "Authentication successful", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), Login.class);
-                            startActivity(intent);
-                            finish();
                             // You can redirect the user to the next activity or perform any other actions here.
                         } else {
-                            // Sign-in failed, display a message to the user
+                            // Sign in failed, display a message to the user.
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                // The verification code entered was invalid
                                 Toast.makeText(OTPVerification.this, "Invalid OTP", Toast.LENGTH_SHORT).show();
                             } else {
-                                // Some other error occurred
                                 Toast.makeText(OTPVerification.this, "Authentication failed", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
                 });
     }
-
 }
