@@ -19,5 +19,6 @@
     <string name="mobile_number">Mobile Number</string>
     <string name="test_gmail_com">test@gmail.com</string>
     <string name="please_enter_the_otp">Please Enter the OTP</string>
-    <string name="scan_object_barcode">Scan Object Barcode</string>
+    <string name="firebase_api_key">AIzaSyBFlsLFJfzLbTX4gWH-8jsbnEcFUgErY1U</string>
+
 </resources>

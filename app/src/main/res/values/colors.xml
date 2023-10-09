@@ -5,4 +5,22 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="trueBlack">#000000</color>
+    <color name="otp_editext_color">#DAE2DFDF</color>
+
+
+
+    <color name="clr_otp_bg">#D81709</color>
+    <color name="clr_otp_btn_yellow">#F8CD06</color>
+    <color name="clr_white_text">#FFFFFF</color>
+    <color name="clr_grey_text">#D3D3D3</color>
+    <color name="clr_grey_text_transparent">#80D3D3D3</color>
+
+
+
+
+
+
+    <color name="maincolor">#181A20</color>
+    <color name="editviewcolor">#1F222A</color>
 </resources>
