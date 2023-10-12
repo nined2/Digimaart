@@ -52,6 +52,6 @@
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
         android:layout_height="678dp"
-        app:srcCompat="@drawable/OtpV" />
+        android:src="@drawable/votp" />
 
 </LinearLayout>

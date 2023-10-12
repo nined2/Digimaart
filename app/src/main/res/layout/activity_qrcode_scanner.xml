@@ -34,11 +34,6 @@
         android:textSize="34sp"
         android:textStyle="bold|italic" />
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/qrB" />
 
     <ImageView
         android:id="@+id/imageView19"
@@ -50,7 +45,7 @@
         android:layout_marginStart="271dp"
         android:layout_marginTop="-288dp"
         android:layout_marginEnd="-9dp"
-        app:srcCompat="@drawable/QRC" />
+        app:srcCompat="@drawable/qrrc" />
 
     <ImageView
         android:id="@+id/imageView21"
@@ -62,7 +57,7 @@
         android:layout_marginStart="297dp"
         android:layout_marginTop="255dp"
         android:layout_marginEnd="-35dp"
-        app:srcCompat="@drawable/QRC" />
+        app:srcCompat="@drawable/qrrc" />
 
 
 </RelativeLayout>

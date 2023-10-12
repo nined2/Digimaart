@@ -32,7 +32,6 @@ public class SignUp extends AppCompatActivity {
         textInputEditTextpassword = findViewById(R.id.password);
         signup_b = findViewById(R.id.signup_b);
         textViewlogin = findViewById(R.id.textViewLogin);
-        progressBar = findViewById(R.id.progressbar);
 
         textViewlogin.setOnClickListener(new View.OnClickListener() {
             @Override
