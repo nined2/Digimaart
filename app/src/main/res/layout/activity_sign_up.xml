@@ -96,11 +96,10 @@
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/Backbottomlogin"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="701dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="619dp" />
 
     <EditText
         android:id="@+id/editTextTextPassword2"

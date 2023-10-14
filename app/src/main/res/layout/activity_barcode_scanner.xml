@@ -18,25 +18,47 @@
         android:layout_marginTop="59dp"
         android:layout_marginEnd="45dp"
         android:background="#96DED1"
-        android:text="@string/scan_object_barcode"
+        android:text="Scan Object Barcode"
         android:textColorHint="#4A8DAC"
         android:textSize="20sp"
         android:textStyle="bold" />
 
 
-
     <ImageView
-        android:id="@+id/imageView20"
-        android:layout_width="match_parent"
-        android:layout_height="654dp"
+        android:id="@+id/img1"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@mipmap/ic_launcher"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="219dp"
-        android:layout_marginEnd="-3dp"
-        android:layout_marginBottom="-27dp"
-        app:srcCompat="@drawable/Tbarcode" />
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginEnd="190dp" />
 
+    <TextView
+        android:id="@+id/name1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img1"
+        android:layout_alignStart="@+id/img1"
+        android:layout_alignEnd="@+id/img1"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="131dp"
+        android:text="Name"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/price1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name1"
+        android:layout_alignStart="@+id/name1"
+        android:layout_alignEnd="@+id/name1"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="-1dp"
+        android:text="Price"
+        android:textSize="20sp" />
 </RelativeLayout>

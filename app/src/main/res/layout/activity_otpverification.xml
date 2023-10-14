@@ -1,57 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".OTPVerification">
-
-    <EditText
-        android:id="@+id/phoneNumberEditText"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:hint="Phone Number"
-        android:inputType="phone"
-        android:textColor="#16A085 "
-        android:textColorHint="#093C37" />
-
-
-
-    <Button
-        android:id="@+id/sendOTPButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#16A085 "
-        android:text="Send OTP"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/otpEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:hint="Enter OTP"
         android:inputType="number"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:visibility="gone"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
 
     <Button
-        android:id="@+id/verifyOTPButton"
-        android:layout_width="match_parent"
+        android:id="@+id/verifyButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Verify OTP"
-        android:visibility="gone"/>
+        android:layout_below="@+id/otpEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Verify OTP"/>
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="match_parent"
-        android:layout_height="678dp"
-        app:srcCompat="@drawable/OtpV" />
-
-</LinearLayout>
+</RelativeLayout>

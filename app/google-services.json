@@ -1,23 +1,13 @@
 {
   "project_info": {
-<<<<<<< HEAD
-    "project_number": "1023403714522",
-    "project_id": "digimart-ee1f4",
-    "storage_bucket": "digimart-ee1f4.appspot.com"
-=======
-    "project_number": "333600619386",
-    "project_id": "digimart-8865d",
-    "storage_bucket": "digimart-8865d.appspot.com"
->>>>>>> origin/master
+    "project_number": "330766331780",
+    "project_id": "digimart-25396",
+    "storage_bucket": "digimart-25396.appspot.com"
   },
   "client": [
     {
       "client_info": {
-<<<<<<< HEAD
-        "mobilesdk_app_id": "1:1023403714522:android:177bfe188ca20f59d482e3",
-=======
-        "mobilesdk_app_id": "1:333600619386:android:4ed0b8e4f35e7262fbf4c3",
->>>>>>> origin/master
+        "mobilesdk_app_id": "1:330766331780:android:e163219fe86c35813bf7d1",
         "android_client_info": {
           "package_name": "com.example.digimart"
         }
@@ -25,11 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-<<<<<<< HEAD
-          "current_key": "AIzaSyDioDiDxwdIhTE__EYFH8fyVayFmC6vzw8"
-=======
-          "current_key": "AIzaSyDqSDVCkjy3P8BrtZKqrn6Yne8_CZhCQX8"
->>>>>>> origin/master
+          "current_key": "AIzaSyBkYLHBxiWV9xm45I5subNXQyph_QxWLuQ"
         }
       ],
       "services": {
