@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity{
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                SharedPreferences sharedPreferences = getSharedPreferences(Login.PREFS_NAME, 0);
+                SharedPreferences sharedPreferences = getSharedPreferences(LOGIN2.PREFS_NAME, 0);
                 boolean hasLoggedIn = sharedPreferences.getBoolean("hasLoggedIn", false);
                 Intent intent = new Intent(MainActivity.this, hasLoggedIn ? QRCodeScanner.class : SignUp.class);
                 startActivity(intent);

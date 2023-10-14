@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".SignUp">
+    tools:context=".SignUp"
+    style="@style/Theme.AppCompat">
 
     <TextView
         android:id="@+id/textViewsignup"
@@ -21,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputEditText
+    <EditText
         android:id="@+id/phoneno"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -50,7 +51,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/alreadylogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
@@ -66,13 +67,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="LOGIN"
+        android:text="@string/loginhere"
         android:textColor="#B10C0C"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintStart_toEndOf="@+id/textView2" />
-
 
     <ImageView
         android:id="@+id/imageView3"
@@ -86,8 +86,8 @@
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/email"
+    <EditText
+        android:id="@+id/mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -100,21 +100,21 @@
         app:layout_constraintTop_toBottomOf="@+id/phoneno"
         tools:ignore="MissingConstraints" />
 
-    <com.google.android.material.textfield.TextInputEditText
+    <EditText
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="56dp"
         android:ems="10"
-        android:hint="Paaword"
+        android:hint="Password"
         android:inputType="textPassword"
         android:textColorHint="#971111"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/mail"
         tools:ignore="MissingConstraints" />
 
-    <com.google.android.material.textfield.TextInputEditText
+    <EditText
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -133,7 +133,7 @@
         android:layout_width="42dp"
         android:layout_height="40dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toStartOf="@+id/email"
+        app:layout_constraintEnd_toStartOf="@+id/mail"
         app:layout_constraintHorizontal_bias="0.913"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView13"
@@ -190,4 +190,30 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/bottombacklogin" />
 
+    <Button
+        android:id="@+id/verify_otp_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="#C70039"
+        android:text="Verify OTP"
+        android:textColor="#FFFFFF"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <EditText
+        android:id="@+id/otpEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="56dp"
+        android:ems="6"
+        android:hint="Enter OTP"
+        android:inputType="number"
+        android:textColorHint="#971111"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verify_otp_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
