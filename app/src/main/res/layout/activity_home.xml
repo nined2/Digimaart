@@ -35,14 +35,14 @@
 
             <ImageView
                 android:id="@+id/imageView9"
-                android:layout_width="48dp"
-                android:layout_height="wrap_content"
+                android:layout_width="51dp"
+                android:layout_height="60dp"
                 android:layout_gravity="end"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/bell" />
+                app:srcCompat="@drawable/baseline_notifications_none_24" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="363dp"
@@ -92,23 +92,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <EditText
-                android:id="@+id/editTextTextPersonName4"
-                android:layout_width="352dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/background_edt2"
-                android:drawableEnd="@drawable/search_btn"
-                android:ems="10"
-                android:hint="Searching for..."
-                android:inputType="textPersonName"
-                android:padding="10dp"
-                android:textColorHint="#ffffff"
-                android:textSize="18sp"
-                android:textStyle="italic|bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -135,12 +118,12 @@
                             android:layout_height="75dp"
                             android:layout_gravity="center_horizontal"
                             android:layout_margin="8dp"
-                            android:background="@drawable/background_btn">
+                            >
 
                             <ImageView
                                 android:id="@+id/orderimg"
-                                android:layout_width="70dp"
-                                android:layout_height="64dp"
+                                android:layout_width="66dp"
+                                android:layout_height="60dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -161,6 +144,8 @@
                                 android:text="     ORDERS"
                                 android:textColor="#221C1C"
                                 android:textSize="20sp"
+
+                                android:fontFamily="@font/geomanistegular"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -186,7 +171,7 @@
                             android:layout_height="74dp"
                             android:layout_gravity="center_horizontal"
                             android:layout_margin="8dp"
-                            android:background="@drawable/background_btn"
+
                             android:contextClickable="true">
 
                             <ImageView
@@ -212,6 +197,7 @@
                                 android:background="@drawable/bakcground_btn_grey"
                                 android:text="   SCAN"
                                 android:textColor="#1D1C1C"
+                                android:fontFamily="@font/geomanistegular"
                                 android:textSize="20sp"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -245,12 +231,12 @@
                             android:layout_height="75dp"
                             android:layout_gravity="center_horizontal"
                             android:layout_margin="8dp"
-                            android:background="@drawable/background_btn">
+                           >
 
                             <ImageView
                                 android:id="@+id/helpimg"
-                                android:layout_width="60dp"
-                                android:layout_height="50dp"
+                                android:layout_width="85dp"
+                                android:layout_height="58dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -269,6 +255,7 @@
                                 android:layout_height="26dp"
                                 android:background="@drawable/bakcground_btn_grey"
                                 android:text="    HELP"
+                                android:fontFamily="@font/geomanistegular"
                                 android:textColor="#1E1B1B"
                                 android:textSize="20sp"
                                 android:textStyle="bold"
@@ -296,7 +283,7 @@
                             android:layout_height="75dp"
                             android:layout_gravity="center_horizontal"
                             android:layout_margin="8dp"
-                            android:background="@drawable/background_btn">
+                          >
 
                             <ImageView
                                 android:id="@+id/paymentimg"
@@ -316,10 +303,11 @@
 
                             <TextView
                                 android:id="@+id/textViewpayment"
-                                android:layout_width="110dp"
+                                android:layout_width="114dp"
                                 android:layout_height="28dp"
                                 android:background="@drawable/bakcground_btn_grey"
-                                android:text=" PAYMENT"
+                                android:fontFamily="@font/geomanistegular"
+                                android:text="   PAYMENT"
                                 android:textColor="#151313"
                                 android:textSize="20sp"
                                 android:textStyle="bold"
@@ -343,14 +331,15 @@
                 <ImageView
                     android:id="@+id/imageView12"
                     android:layout_width="349dp"
-                    android:layout_height="216dp"
+                    android:layout_height="219dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
 
-                    app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/banner_bakcground" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:srcCompat="@drawable/blacktroll" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
