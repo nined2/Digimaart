@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".PayNow">
+
+    <Button
+        android:id="@+id/pay_button"
+        android:layout_width="223dp"
+        android:layout_height="73dp"
+        android:background="	#005b96"
+        android:text="Pay Now"
+        android:textColor="@color/white"
+        android:textSize="15pt"
+        tools:ignore="MissingConstraints" />
+
+</LinearLayout>
