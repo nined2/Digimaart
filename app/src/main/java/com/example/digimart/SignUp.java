@@ -6,37 +6,21 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
-
-import java.util.concurrent.TimeUnit;
 
 public class SignUp extends AppCompatActivity {
 
-    EditText textInputEditTextname, textInputEditTextphoneno, textInputEditTextmail, textInputEditTextpassword, otpEditText;
-    Button signupButton, verifyOTPButton;
-    TextView textViewlogin,alreadylogin;
-    String phoneNumber; // Store the phone number for OTP verification
-    boolean isVerificationInProgress = false;
-
-    // Firebase variables
-    private FirebaseAuth firebaseAuth;
-    private PhoneAuthProvider phoneAuthProvider;
-    private String verificationId;
-
+    TextInputEditText textInputEditTextname, textInputEditTextphoneno, textInputEditTextmail, textInputEditTextpassword;
+    Button signup_b;
+    TextView textViewlogin;
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,143 +30,68 @@ public class SignUp extends AppCompatActivity {
         textInputEditTextphoneno = findViewById(R.id.phoneno);
         textInputEditTextmail = findViewById(R.id.mail);
         textInputEditTextpassword = findViewById(R.id.password);
-        signupButton = findViewById(R.id.signup_b);
+        signup_b = findViewById(R.id.signup_b);
         textViewlogin = findViewById(R.id.textViewLogin);
-        verifyOTPButton = findViewById(R.id.verify_otp_button);
-        otpEditText = findViewById(R.id.otpEditText);
-        alreadylogin = findViewById(R.id.alreadylogin);
-        // Initialize Firebase
-        firebaseAuth = FirebaseAuth.getInstance();
-        phoneAuthProvider = PhoneAuthProvider.getInstance();
-
-        // Hide OTP components initially
-        verifyOTPButton.setVisibility(View.GONE);
-        otpEditText.setVisibility(View.GONE);
+        progressBar = findViewById(R.id.progressbar);
 
         textViewlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),LOGIN2.class);
+                Intent intent = new Intent(getApplicationContext(),Login.class);
                 startActivity(intent);
                 finish();
             }
         });
-
-        signupButton.setOnClickListener(new View.OnClickListener() {
+        signup_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isVerificationInProgress) {
-                    String name,phoneno,mail,password;
-                    name = String.valueOf(textInputEditTextname.getText());
-                    phoneno = String.valueOf(textInputEditTextphoneno.getText());
-                    mail = String.valueOf(textInputEditTextmail.getText());
-                    password = String.valueOf(textInputEditTextpassword.getText());
 
-                    if (!name.equals("") && !phoneno.equals("") && !mail.equals("") && !password.equals("")) {
-                        String cleanPhoneNumber = phoneno.replaceAll("[^0-9]", "");
+                String name,phoneno,mail,password;
+                name = String.valueOf(textInputEditTextname.getText());
+                phoneno = String.valueOf(textInputEditTextphoneno.getText());
+                mail = String.valueOf(textInputEditTextmail.getText());
+                password = String.valueOf(textInputEditTextpassword.getText());
 
-                        // Add the "+91" prefix to the phone number
-                        String formattedPhoneNumber = "+91" + cleanPhoneNumber;
-                        phoneNumber = formattedPhoneNumber; // Store the phone number for OTP verification
+                if(!name.equals("") && !phoneno.equals("") && !mail.equals("") && !password.equals(""))
+                {
+                    progressBar.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler(Looper.getMainLooper());
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            String[] field = new String[4];
+                            field[0] = "name";
+                            field[1] = "phoneno";
+                            field[2] = "mail";
+                            field[3] = "password";
 
-                        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                                phoneNumber,
-                                60,
-                                TimeUnit.SECONDS,
-                                SignUp.this,
-                                new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-                                    @Override
-                                    public void onCodeSent(String verificationId,
-                                                           PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                                        SignUp.this.verificationId = verificationId;
+                            String[] data = new String[4];
+                            data[0] = name;
+                            data[1] = phoneno;
+                            data[2] = mail;
+                            data[3] = password;
+                            PutData putData = new PutData("http://192.168.42.35/loginsignup/signup.php", "POST", field, data);
+                            if (putData.startPut()) {
+                                progressBar.setVisibility(View.GONE);
+                                if (putData.onComplete()) {
+                                    String result = putData.getResult();
+                                    if(result.equals("Signup Success")){
+                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(getApplicationContext(), home.class);
+                                        startActivity(intent);
+                                        finish();
                                     }
-
-                                    @Override
-                                    public void onVerificationCompleted(PhoneAuthCredential credential) {
-                                        // Automatically handle verification when the device is able to receive SMS
-                                        firebaseAuth.signInWithCredential(credential)
-                                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<AuthResult> task) {
-                                                        if (task.isSuccessful()) {
-                                                            // OTP verification is successful
-                                                            // Proceed to save user data in the database
-                                                            saveUserDataToDatabase(name, phoneNumber, mail, password);
-                                                        } else {
-                                                            // Handle verification failure
-                                                            Toast.makeText(getApplicationContext(), "Verification failed.", Toast.LENGTH_SHORT).show();
-                                                        }
-                                                    }
-                                                });
-                                    }
-
-                                    @Override
-                                    public void onVerificationFailed(FirebaseException e) {
-                                        // Handle verification failure
-                                        Toast.makeText(getApplicationContext(), "Verification failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    else {
+                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                                     }
                                 }
-                        );
+                            }
 
-                        // Hide form fields and show OTP input field
-                        textInputEditTextname.setVisibility(View.GONE);
-                        textInputEditTextphoneno.setVisibility(View.GONE);
-                        textInputEditTextmail.setVisibility(View.GONE);
-                        textInputEditTextpassword.setVisibility(View.GONE);
-                        signupButton.setVisibility(View.GONE);
-                        textViewlogin.setVisibility(View.GONE);
-                        alreadylogin.setVisibility(View.GONE);
-
-                        verifyOTPButton.setVisibility(View.VISIBLE);
-                        otpEditText.setVisibility(View.VISIBLE);
-
-                        isVerificationInProgress = true;
-                    } else {
-                        Toast.makeText(getApplicationContext(), "All fields are required", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    // User is verifying OTP
-                    String enteredOTP = otpEditText.getText().toString().trim();
-                    if (!enteredOTP.isEmpty()) {
-                        // Automatically handled in the onVerificationCompleted callback
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Please enter the OTP", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        });
-    }
-
-    private void saveUserDataToDatabase(String name, String phoneNumber, String mail, String password) {
-        Handler handler = new Handler(Looper.getMainLooper());
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                String[] field = new String[4];
-                field[0] = "name";
-                field[1] = "phoneno";
-                field[2] = "mail";
-                field[3] = "password";
-
-                String[] data = new String[4];
-                data[0] = name;
-                data[1] = phoneNumber;
-                data[2] = mail;
-                data[3] = password;
-
-                PutData putData = new PutData("http://192.168.42.35/loginsignup/signup.php", "POST", field, data);
-                if (putData.startPut()) {
-                    if (putData.onComplete()) {
-                        String result = putData.getResult();
-                        if (result.equals("Signup Success")) {
-                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), home.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                         }
-                    }
+                    });
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "All fields are required", Toast.LENGTH_SHORT).show();
                 }
             }
         });
