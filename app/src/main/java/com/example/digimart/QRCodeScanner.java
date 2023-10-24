@@ -20,7 +20,7 @@ public class QRCodeScanner extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_barcode_scanner);
+        setContentView(R.layout.activity_qrcode_scanner);
         btn_scan = findViewById(R.id.btn_scan);
         btn_scan.setOnClickListener(v->
         {

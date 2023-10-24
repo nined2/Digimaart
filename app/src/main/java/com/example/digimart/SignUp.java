@@ -28,7 +28,7 @@ public class SignUp extends AppCompatActivity {
 
     EditText textInputEditTextname, textInputEditTextphoneno, textInputEditTextmail, textInputEditTextpassword, otpEditText;
     Button signupButton, verifyOTPButton;
-    TextView textViewlogin,alreadylogin;
+    TextView textViewlogin, alreadylogin;
     String phoneNumber; // Store the phone number for OTP verification
     boolean isVerificationInProgress = false;
 
@@ -42,6 +42,10 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        // Initialize Firebase
+        firebaseAuth = FirebaseAuth.getInstance();
+        phoneAuthProvider = PhoneAuthProvider.getInstance();
+
         textInputEditTextname = findViewById(R.id.name);
         textInputEditTextphoneno = findViewById(R.id.phoneno);
         textInputEditTextmail = findViewById(R.id.mail);
@@ -51,9 +55,6 @@ public class SignUp extends AppCompatActivity {
         verifyOTPButton = findViewById(R.id.verify_otp_button);
         otpEditText = findViewById(R.id.otpEditText);
         alreadylogin = findViewById(R.id.alreadylogin);
-        // Initialize Firebase
-        firebaseAuth = FirebaseAuth.getInstance();
-        phoneAuthProvider = PhoneAuthProvider.getInstance();
 
         // Hide OTP components initially
         verifyOTPButton.setVisibility(View.GONE);
@@ -62,9 +63,41 @@ public class SignUp extends AppCompatActivity {
         textViewlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),LOGIN2.class);
+                Intent intent = new Intent(getApplicationContext(), LOGIN2.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        // Click listener for the "Verify OTP" button
+        verifyOTPButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String enteredOTP = otpEditText.getText().toString().trim();
+                if (!enteredOTP.isEmpty()) {
+                    // Verify the entered OTP
+                    PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, enteredOTP);
+                    firebaseAuth.signInWithCredential(credential)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        String name = String.valueOf(textInputEditTextname.getText());
+                                        String mail = String.valueOf(textInputEditTextmail.getText());
+                                        String password = String.valueOf(textInputEditTextpassword.getText());
+                                        String phoneno = String.valueOf(textInputEditTextphoneno.getText());
+                                        // OTP verification is successful
+                                        // Proceed to save user data in the database
+                                        saveUserDataToDatabase(name, phoneno, mail, password);
+                                    } else {
+                                        // Handle verification failure
+                                        Toast.makeText(getApplicationContext(), "Verification failed.", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                } else {
+                    Toast.makeText(getApplicationContext(), "Please enter the OTP", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -107,7 +140,7 @@ public class SignUp extends AppCompatActivity {
                                                         if (task.isSuccessful()) {
                                                             // OTP verification is successful
                                                             // Proceed to save user data in the database
-                                                            saveUserDataToDatabase(name, phoneNumber, mail, password);
+                                                            saveUserDataToDatabase(name, phoneno, mail, password);
                                                         } else {
                                                             // Handle verification failure
                                                             Toast.makeText(getApplicationContext(), "Verification failed.", Toast.LENGTH_SHORT).show();
@@ -153,7 +186,7 @@ public class SignUp extends AppCompatActivity {
         });
     }
 
-    private void saveUserDataToDatabase(String name, String phoneNumber, String mail, String password) {
+    private void saveUserDataToDatabase(String name, String phoneno, String mail, String password) {
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(new Runnable() {
             @Override
@@ -166,23 +199,29 @@ public class SignUp extends AppCompatActivity {
 
                 String[] data = new String[4];
                 data[0] = name;
-                data[1] = phoneNumber;
+                data[1] = phoneno;
                 data[2] = mail;
                 data[3] = password;
 
-                PutData putData = new PutData("http://192.168.42.35/loginsignup/signup.php", "POST", field, data);
+                PutData putData = new PutData("http://192.168.0.105/LogIn-SignUp-master/usignup.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();
                         if (result.equals("Signup Success")) {
                             Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), home.class);
+                            Intent intent = new Intent(getApplicationContext(), LOGIN2.class);
                             startActivity(intent);
                             finish();
                         } else {
                             Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                         }
                     }
+                    else {
+                        Toast.makeText(getApplicationContext(), "Error",Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Failure",Toast.LENGTH_SHORT).show();
                 }
             }
         });
