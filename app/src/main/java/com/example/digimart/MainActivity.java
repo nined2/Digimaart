@@ -1,9 +1,7 @@
 package com.example.digimart; // Change this to your actual package name
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,19 +17,4 @@ public class MainActivity extends AppCompatActivity{
 
         SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
-        int SPLASH_TIME_OUT = 3000;
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                SharedPreferences sharedPreferences = getSharedPreferences(LOGIN2.PREFS_NAME, 0);
-                boolean hasLoggedIn = sharedPreferences.getBoolean("hasLoggedIn", false);
-                Intent intent = new Intent(MainActivity.this, hasLoggedIn ? QRCodeScanner.class : SignUp.class);
-                startActivity(intent);
-                finish();
-            }
-        }, SPLASH_TIME_OUT);
-
-    }
-
-
-}
+    }}

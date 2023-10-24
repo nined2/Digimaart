@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".home">
+    tools:context=".Home">
 
 
     <ImageView
@@ -38,7 +38,7 @@
             <ImageView
                 android:id="@+id/imageView9"
                 android:layout_width="51dp"
-                android:layout_height="60dp"
+                android:layout_height="57dp"
                 android:layout_gravity="end"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
@@ -47,7 +47,7 @@
                 app:srcCompat="@drawable/baseline_notifications_none_24" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="363dp"
+                android:layout_width="393dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-1dp"
                 android:background="@drawable/white_background"
@@ -59,8 +59,8 @@
 
                 <ImageView
                     android:id="@+id/imageView10"
-                    android:layout_width="127dp"
-                    android:layout_height="160dp"
+                    android:layout_width="103dp"
+                    android:layout_height="120dp"
                     android:layout_marginStart="4dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -70,8 +70,8 @@
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="52dp"
-                    android:layout_marginTop="52dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="40dp"
                     android:text="Akshit Shah"
                     android:textColor="#373737"
                     android:textSize="22sp"
@@ -83,14 +83,14 @@
                     android:id="@+id/textView7"
                     android:layout_width="181dp"
                     android:layout_height="22dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="68dp"
                     android:text="shahakshit10@gmail.com"
                     android:textColor="#373737"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.63" />
+                    app:layout_constraintVertical_bias="0.685" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -233,7 +233,7 @@
                             android:layout_height="75dp"
                             android:layout_gravity="center_horizontal"
                             android:layout_margin="8dp"
-                           >
+                            >
 
                             <ImageView
                                 android:id="@+id/helpimg"
@@ -285,7 +285,7 @@
                             android:layout_height="75dp"
                             android:layout_gravity="center_horizontal"
                             android:layout_margin="8dp"
-                          >
+                            >
 
                             <ImageView
                                 android:id="@+id/paymentimg"

@@ -78,6 +78,4 @@ public class QRCodeScanner extends AppCompatActivity {
             }
         }
     });
-
-
 }
