@@ -49,7 +49,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="393dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-1dp"
+                android:layout_marginTop="-55dp"
                 android:background="@drawable/white_background"
                 android:elevation="3dp"
                 android:padding="5dp"
@@ -140,14 +140,14 @@
 
                             <TextView
                                 android:id="@+id/textVieworder"
-                                android:layout_width="128dp"
-                                android:layout_height="33dp"
+                                android:layout_width="117dp"
+                                android:layout_height="25dp"
                                 android:background="@drawable/bakcground_btn_grey"
+                                android:fontFamily="@font/geomanistegular"
                                 android:text="     ORDERS"
                                 android:textColor="#221C1C"
-                                android:textSize="20sp"
 
-                                android:fontFamily="@font/geomanistegular"
+                                android:textSize="20sp"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -334,11 +334,12 @@
                     android:id="@+id/imageView12"
                     android:layout_width="349dp"
                     android:layout_height="219dp"
+                    android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
 
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0"
                     app:srcCompat="@drawable/blacktroll" />
