@@ -101,10 +101,10 @@
         app:layout_constraintVertical_bias="0.03" />
 
     <TextView
-        android:id="@+id/textViewsignup."
+        android:id="@+id/textViewSignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SIGNUP"
+        android:text="@string/signuphere"
         android:textColor="#C70039"
         android:textSize="24sp"
         android:textStyle="bold"
