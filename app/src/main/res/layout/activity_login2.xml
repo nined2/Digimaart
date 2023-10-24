@@ -13,8 +13,8 @@
         android:layout_width="1324dp"
         android:layout_height="282dp"
         app:srcCompat="@drawable/loginback"
-        tools:layout_editor_absoluteX="-457dp"
-        tools:layout_editor_absoluteY="511dp" />
+        tools:layout_editor_absoluteX="-483dp"
+        tools:layout_editor_absoluteY="628dp" />
 
     <EditText
         android:id="@+id/editTextText2"
@@ -55,7 +55,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/topback" />
+        app:srcCompat="@drawable/backtop" />
 
     <EditText
         android:id="@+id/phoneno"
