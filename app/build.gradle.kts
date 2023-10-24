@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.google.gms.google-services")
 }
 
 
@@ -88,12 +87,16 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
-    implementation ("com.google.zxing:core:3.3.0")
+    implementation("com.googlecode.libphonenumber:libphonenumber:8.12.15") // Use the appropriate version
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation("com.google.firebase:firebase-auth:22.1.2")// Use the latest version
     implementation("com.google.firebase:firebase-core:21.1.1")// Use the latest version
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("com.google.firebase:firebase-analytics")
-
+    implementation("com.github.mutasemhajhasan:BooleanSelectionView:1.3.0")
+    implementation("com.hbb20:ccp:2.5.0")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 }
+

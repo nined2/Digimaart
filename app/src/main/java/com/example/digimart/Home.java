@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class home extends AppCompatActivity {
+public class Home extends AppCompatActivity {
 
     ImageView orderimg, scanimg, helpimg, paymentimg;
     TextView textVieworder, textViewscan, textViewhelp, textViewpayment;

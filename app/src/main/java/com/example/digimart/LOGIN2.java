@@ -8,38 +8,41 @@ import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 public class LOGIN2 extends AppCompatActivity {
     public static String PREFS_NAME="MyPrefsFile";
-    TextView textViewSignup;
+    TextView textViewLogin;
     EditText textInputEditTextphoneno,textInputEditTextpassword;
     Button loginbutton;
+    ProgressBar progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
 
-        textViewSignup = findViewById(R.id.textViewSignup);
-        textInputEditTextphoneno = findViewById(R.id.phoneno);
-        textInputEditTextpassword = findViewById(R.id.password);
-        loginbutton = findViewById(R.id.login_b);
+        TextView textViewLogin = findViewById(R.id.textViewsignup);
+        EditText textInputEditTextphoneno = findViewById(R.id.phoneno);
+        EditText textInputEditTextpassword = findViewById(R.id.password);
+        Button loginbutton = findViewById(R.id.login_b);
 
-        textViewSignup.setOnClickListener(new View.OnClickListener() {
+        textViewLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SignUp.class);
                 startActivity(intent);
                 finish();
+
             }
         });
-
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +53,7 @@ public class LOGIN2 extends AppCompatActivity {
 
                 if(!phoneno.equals("") && !password.equals(""))
                 {
+                    progress.setVisibility(View.VISIBLE);
                     Handler handler = new Handler(Looper.getMainLooper());
                     handler.post(new Runnable() {
                         @Override
@@ -61,7 +65,7 @@ public class LOGIN2 extends AppCompatActivity {
                             String[] data = new String[2];
                             data[0] = phoneno;
                             data[1] = password;
-                            PutData putData = new PutData("http://192.168.0.105/LogIn-SignUp-master/ulogin.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.43.201/loginsignup/login.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
