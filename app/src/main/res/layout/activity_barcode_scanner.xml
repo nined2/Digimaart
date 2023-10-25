@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="54dp"
-        android:layout_marginTop="59dp"
+        android:layout_marginTop="38dp"
         android:layout_marginEnd="45dp"
         android:background="#96DED1"
         android:text="Scan Object Barcode"
@@ -23,40 +23,31 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/productRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btn_scan"
+        android:layout_marginTop="17dp"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"
+        android:scrollbars="vertical" />
 
-    <ImageView
-        android:id="@+id/img1"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@mipmap/ic_launcher"
-        android:layout_alignParentStart="true"
+    <Button
+        android:id="@+id/pay_button"
+        android:layout_width="223dp"
+        android:layout_height="73dp"
+        android:layout_alignStart="@+id/btn_scan"
+        android:layout_alignEnd="@+id/btn_scan"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="168dp"
-        android:layout_marginEnd="190dp" />
-
-    <TextView
-        android:id="@+id/name1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/img1"
-        android:layout_alignStart="@+id/img1"
-        android:layout_alignEnd="@+id/img1"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="131dp"
-        android:text="Name"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/price1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/name1"
-        android:layout_alignEnd="@+id/name1"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="-1dp"
-        android:text="Price"
-        android:textSize="20sp" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="622dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="35dp"
+        android:background="	#005b96"
+        android:text="Pay Now"
+        android:textColor="@color/white"
+        android:textSize="15pt"
+        tools:ignore="MissingConstraints" />
 </RelativeLayout>

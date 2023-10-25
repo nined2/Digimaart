@@ -8,33 +8,30 @@ import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 public class LOGIN2 extends AppCompatActivity {
     public static String PREFS_NAME="MyPrefsFile";
-    TextView textViewLogin;
+    TextView textViewsignup;
     EditText textInputEditTextphoneno,textInputEditTextpassword;
     Button loginbutton;
-    ProgressBar progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
 
-        TextView textViewLogin = findViewById(R.id.textViewsignup);
+        TextView textViewsignup = findViewById(R.id.textViewSignup);
         EditText textInputEditTextphoneno = findViewById(R.id.phoneno);
         EditText textInputEditTextpassword = findViewById(R.id.password);
         Button loginbutton = findViewById(R.id.login_b);
 
-        textViewLogin.setOnClickListener(new View.OnClickListener() {
+        textViewsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SignUp.class);
@@ -53,7 +50,6 @@ public class LOGIN2 extends AppCompatActivity {
 
                 if(!phoneno.equals("") && !password.equals(""))
                 {
-                    progress.setVisibility(View.VISIBLE);
                     Handler handler = new Handler(Looper.getMainLooper());
                     handler.post(new Runnable() {
                         @Override
@@ -65,7 +61,7 @@ public class LOGIN2 extends AppCompatActivity {
                             String[] data = new String[2];
                             data[0] = phoneno;
                             data[1] = password;
-                            PutData putData = new PutData("http://192.168.43.201/loginsignup/login.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.149.212/phpdb/ulogin.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
@@ -73,9 +69,11 @@ public class LOGIN2 extends AppCompatActivity {
                                         SharedPreferences sharedPreferences = getSharedPreferences(LOGIN2.PREFS_NAME,0);
                                         SharedPreferences.Editor editor=sharedPreferences.edit();
                                         editor.putBoolean("hasLoggedIn",true);
+                                        editor.putString("phoneno", phoneno);
                                         editor.apply();
+
                                         Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getApplicationContext(), QRCodeScanner.class);
+                                        Intent intent = new Intent(getApplicationContext(), Home.class);
                                         startActivity(intent);
                                         finish();
                                     }

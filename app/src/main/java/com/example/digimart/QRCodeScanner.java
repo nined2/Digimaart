@@ -37,6 +37,8 @@ public class QRCodeScanner extends AppCompatActivity {
         barLauncher.launch(options);
     }
 
+
+
     ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result->
     {
         if(result.getContents() != null) {

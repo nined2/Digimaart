@@ -7,20 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".LOGIN2"
     style="@style/Theme.AppCompat">
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="1324dp"
-        android:layout_height="282dp"
-        app:srcCompat="@drawable/loginback"
-        tools:layout_editor_absoluteX="-483dp"
-        tools:layout_editor_absoluteY="628dp" />
-
     <EditText
         android:id="@+id/editTextText2"
         android:layout_width="114dp"
         android:layout_height="62dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="156dp"
         android:ems="10"
         android:fontFamily="sans-serif-condensed"
         android:inputType="text"
@@ -95,10 +86,9 @@
         android:textColor="#090A21 "
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.03" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewSignup"

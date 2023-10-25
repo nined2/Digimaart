@@ -1,8 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
-
 
 android {
     namespace = "com.example.digimart"
@@ -77,6 +77,7 @@ dependencies {
     implementation("com.google.firebase:firebase-messaging-ktx:23.2.1")
     implementation("com.github.bumptech.glide:glide:4.12.0")
     implementation("com.squareup.okhttp:okhttp:2.7.5")
+    implementation("com.google.android.gms:play-services-analytics-impl:18.0.4")
     testImplementation("junit:junit:4.13")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -98,5 +99,14 @@ dependencies {
     implementation("com.github.mutasemhajhasan:BooleanSelectionView:1.3.0")
     implementation("com.hbb20:ccp:2.5.0")
     implementation("de.hdodenhof:circleimageview:3.1.0")
-}
+    implementation("com.stripe:stripe-android:20.32.1")//Stripe SDK
+    implementation("com.android.volley:volley:1.2.1")  //StripeVolley
 
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")//cart
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.0")
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    implementation("com.squareup.picasso:picasso:2.8")
+
+}
