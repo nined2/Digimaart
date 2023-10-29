@@ -21,6 +21,7 @@ android {
         }
     }
 
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -29,6 +30,9 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+    viewBinding{
+        enable=true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -108,5 +112,7 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.0")
     implementation("com.github.bumptech.glide:glide:4.12.0")
     implementation("com.squareup.picasso:picasso:2.8")
+    implementation("androidx.appcompat:appcompat:1.6.1") //Gpay
+
 
 }
