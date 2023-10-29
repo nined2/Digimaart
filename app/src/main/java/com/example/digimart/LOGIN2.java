@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,10 +62,11 @@ public class LOGIN2 extends AppCompatActivity {
                             String[] data = new String[2];
                             data[0] = phoneno;
                             data[1] = password;
-                            PutData putData = new PutData("http://192.168.149.212/phpdb/ulogin.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.29.53/phpdb/ulogin.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
+                                    Log.e("ProfileActivity", "Error: " + result);
                                     if(result.equals("Login Success")){
                                         SharedPreferences sharedPreferences = getSharedPreferences(LOGIN2.PREFS_NAME,0);
                                         SharedPreferences.Editor editor=sharedPreferences.edit();
@@ -76,6 +78,7 @@ public class LOGIN2 extends AppCompatActivity {
                                         Intent intent = new Intent(getApplicationContext(), Home.class);
                                         startActivity(intent);
                                         finish();
+
                                     }
                                     else {
                                         Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
