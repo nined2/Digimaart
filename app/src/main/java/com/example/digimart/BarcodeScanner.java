@@ -63,22 +63,12 @@ public class BarcodeScanner extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                try {
-                    if (paymentIntentClientSecret != null) {
-                        paymentSheet.presentWithPaymentIntent(paymentIntentClientSecret,
-                                new PaymentSheet.Configuration("Codes Easy", configuration));
-                    }
-                } catch (Exception e) {
-                    // Log the error
-                    Log.e(TAG, "PaymentSheet Error: " + e.getMessage());
-                    // Display an error toast
-                    showToast("PaymentSheet Error: " + e.getMessage());
-                }
+                Intent intent = new Intent(getApplicationContext(), PayNow.class);
+                startActivity(intent);
+                finish();
             }
         });
 
-        paymentSheet = new PaymentSheet(this, this::onPaymentSheetResult);
-        fetchApi();
 
         RecyclerView recyclerView = findViewById(R.id.productRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -160,68 +150,8 @@ public class BarcodeScanner extends AppCompatActivity {
             }).show();
         }
     });
-    private void onPaymentSheetResult(final PaymentSheetResult paymentSheetResult) {
-        if (paymentSheetResult instanceof PaymentSheetResult.Canceled) {
-            showToast("Payment Canceled");
-        } else if (paymentSheetResult instanceof PaymentSheetResult.Failed) {
-            showToast("Payment Failed: " + ((PaymentSheetResult.Failed) paymentSheetResult).getError().getMessage());
-        } else if (paymentSheetResult instanceof PaymentSheetResult.Completed) {
-            showToast("Payment Successful");
-            Intent intent = new Intent(getApplicationContext(), Home.class);
-            startActivity(intent);
-            finish();
-        }
-    }
 
-    public void fetchApi() {
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://192.168.0.105:63343/untitled/index.php?_ijt=qgem2u3unnohb0qa9e2gqgu8mn&_ij_reload=RELOAD_ON_SAVE"; // Update with your actual API URL
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new com.android.volley.Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            paymentIntentClientSecret = jsonObject.getString("paymentIntent");
-                            PaymentConfiguration.init(getApplicationContext(), jsonObject.getString("publishableKey"));
-
-                            configuration = new PaymentSheet.CustomerConfiguration(
-                                    jsonObject.getString("customer"),
-                                    jsonObject.getString("ephemeralKey")
-                            );
-                        } catch (Exception e) {
-                            // Log the error
-                            Log.e(TAG, "API Response Error: " + e.getMessage());
-                            // Display an error toast
-                            showToast("API Response Error: " + e.getMessage());
-                        }
-                    }
-                }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-                try {
-                    JSONObject jsonObject = new JSONObject("{\"paymentIntent\":\"pi_3O4xZuSHXO9o3WhY0K0OOCtQ_secret_zr6nAUmUl5CXQjIhbEF0wb7TT\",\"ephemeralKey\":\"ek_test_YWNjdF8xTm5kTklTSFhPOW8zV2hZLGJVUlh3T05Nd0FyZ2c2eVRaOUxVTmZpeW1Od1V1ZUc_00ngWCTg1S\",\"customer\":\"cus_Osj1Q55cc9NTZ3\",\"publishableKey\":\"pk_test_51NndNISHXO9o3WhYb7RVXeHfENgUKajXmW2LMSx1pYK0bTA2Gmt7x3t6jHJ8kqqvsK1esdx3cEHS8ifcZCafrDTr00tUmcyldl\"}");
-                    configuration = new PaymentSheet.CustomerConfiguration(
-                            jsonObject.getString("customer"),
-                            jsonObject.getString("ephemeralKey")
-                    );
-                    paymentIntentClientSecret = jsonObject.getString("paymentIntent");
-                    PaymentConfiguration.init(getApplicationContext(), jsonObject.getString("publishableKey"));
-                } catch(JSONException e){
-                    e.printStackTrace();
-                }
-            }
-        }) {
-            protected Map<String, String> getParams() {
-                Map<String, String> paramV = new HashMap<>();
-                paramV.put("authKey", "abc");
-                return paramV;
-            }
-        };
-        queue.add(stringRequest);
-    }
 
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
