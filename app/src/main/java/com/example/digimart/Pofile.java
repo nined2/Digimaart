@@ -53,7 +53,7 @@ public class Pofile extends AppCompatActivity implements BottomSheets.OnOkButton
         field[0] = "phoneno";
         String[] data = new String[1];
         data[0] = phoneNumber;
-        PutData putData = new PutData("http://192.168.137.70/phpdb/hname.php", "POST", field, data);
+        PutData putData = new PutData("http://172.18.0.135/phpdb/hname.php", "POST", field, data);
         if (putData.startPut()) {
             if (putData.onComplete()) {
                 String result = putData.getResult();
@@ -70,7 +70,7 @@ public class Pofile extends AppCompatActivity implements BottomSheets.OnOkButton
         field[0] = "phoneno";
         String[] data = new String[1];
         data[0] = phoneNumber;
-        PutData putData = new PutData("http://192.168.137.70/phpdb/hmail.php", "POST", field, data);
+        PutData putData = new PutData("http://172.18.0.135/phpdb/hmail.php", "POST", field, data);
         if (putData.startPut()) {
             if (putData.onComplete()) {
                 String result = putData.getResult();

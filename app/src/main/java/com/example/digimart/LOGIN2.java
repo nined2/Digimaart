@@ -44,6 +44,7 @@ public class LOGIN2 extends AppCompatActivity {
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String phoneno,password;
                 phoneno = String.valueOf(textInputEditTextphoneno.getText());
                 password = String.valueOf(textInputEditTextpassword.getText());
@@ -61,7 +62,7 @@ public class LOGIN2 extends AppCompatActivity {
                             String[] data = new String[2];
                             data[0] = phoneno;
                             data[1] = password;
-                            PutData putData = new PutData("http://192.168.137.70/phpdb/ulogin.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.29.53/phpdb/ulogin.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
@@ -77,19 +78,24 @@ public class LOGIN2 extends AppCompatActivity {
                                         Intent intent = new Intent(getApplicationContext(), Home.class);
                                         startActivity(intent);
                                         finish();
+
                                     }
                                     else {
                                         Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             }
+
                         }
                     });
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "All fields are required", Toast.LENGTH_SHORT).show();
                 }
+
+
             }
         });
+
     }
 }

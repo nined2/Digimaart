@@ -74,7 +74,7 @@ public class Home extends AppCompatActivity {
         field[0] = "phoneno";
         String[] data = new String[1];
         data[0] = phoneNumber;
-        PutData putData = new PutData("http://192.168.137.70/phpdb/hmail.php", "POST", field, data);
+        PutData putData = new PutData("http://172.18.0.135/phpdb/hmail.php", "POST", field, data);
         if (putData.startPut()) {
             if (putData.onComplete()) {
                 String result = putData.getResult();
@@ -91,7 +91,7 @@ public class Home extends AppCompatActivity {
         field[0] = "phoneno";
         String[] data = new String[1];
         data[0] = phoneNumber;
-        PutData putData = new PutData("http://192.168.137.70/phpdb/hname.php", "POST", field, data);
+        PutData putData = new PutData("http://172.18.0.135/phpdb/hname.php", "POST", field, data);
         if (putData.startPut()) {
             if (putData.onComplete()) {
                 String result = putData.getResult();
@@ -108,7 +108,7 @@ public class Home extends AppCompatActivity {
 
         String[] data = new String[2];
         data[0] = phoneno;
-        PutData putData = new PutData("http://192.168.0.104/phpdb/usercreate.php","POST",field,data);
+        PutData putData = new PutData("http://172.18.0.135/phpdb/usercreate.php","POST",field,data);
 
     }
     ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result->
