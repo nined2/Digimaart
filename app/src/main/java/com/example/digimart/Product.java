@@ -30,4 +30,3 @@ public class Product {
         return name + " - $" + price;
     }
 }
-

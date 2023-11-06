@@ -63,7 +63,7 @@
                     android:layout_marginStart="4dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/profile" />
+                    app:srcCompat="@drawable/business" />
 
                 <TextView
                     android:id="@+id/textView6"
@@ -71,7 +71,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="28dp"
                     android:layout_marginTop="40dp"
-                    android:text="Akshit Shah"
                     android:textColor="#373737"
                     android:textSize="22sp"
                     android:textStyle="bold"
@@ -83,9 +82,8 @@
                     android:layout_width="181dp"
                     android:layout_height="22dp"
                     android:layout_marginEnd="68dp"
-                    android:text="shahakshit10@gmail.com"
                     android:textColor="#373737"
-                    android:textSize="18sp"
+                    android:textSize="17sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -294,7 +292,7 @@
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/baseline_payments_24" />
+                                app:srcCompat="@drawable/baseline_shopping_cart_24" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -308,7 +306,7 @@
                                 android:layout_height="28dp"
                                 android:background="@drawable/bakcground_btn_grey"
                                 android:fontFamily="@font/geomanistegular"
-                                android:text="   PAYMENT"
+                                android:text="       CART"
                                 android:textColor="#151313"
                                 android:textSize="20sp"
                                 android:textStyle="bold"
@@ -337,7 +335,6 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
-
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0"

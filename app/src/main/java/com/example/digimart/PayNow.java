@@ -126,7 +126,7 @@ public class PayNow extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
                 try {
-                    JSONObject jsonObject = new JSONObject("{\"paymentIntent\":\"pi_3O6H0HSHXO9o3WhY1Kd0cDde_secret_DYZMsqWYQxDcZR85inQunmbuu\",\"ephemeralKey\":\"ek_test_YWNjdF8xTm5kTklTSFhPOW8zV2hZLFdzYnNpMUFaOGw2UTV5bmtnaXJGblR2S2Z2UWZYSXU_00LYKbZA52\",\"customer\":\"cus_Ou5A3VnERz2gc9\",\"publishableKey\":\"pk_test_51NndNISHXO9o3WhYb7RVXeHfENgUKajXmW2LMSx1pYK0bTA2Gmt7x3t6jHJ8kqqvsK1esdx3cEHS8ifcZCafrDTr00tUmcyldl\"}");
+                    JSONObject jsonObject = new JSONObject("{\"paymentIntent\":\"pi_3O90RKSHXO9o3WhY0eHn15Qc_secret_yrUSlY8RaQ5t1DbxkyxDduexv\",\"ephemeralKey\":\"ek_test_YWNjdF8xTm5kTklTSFhPOW8zV2hZLHJaV3h1dkNKb01oUUhDT1lRV1hIZ2dLdzBCOXExb1o_00DMDjroIb\",\"customer\":\"cus_OwuFRyjz2pRsu1\",\"publishableKey\":\"pk_test_51NndNISHXO9o3WhYb7RVXeHfENgUKajXmW2LMSx1pYK0bTA2Gmt7x3t6jHJ8kqqvsK1esdx3cEHS8ifcZCafrDTr00tUmcyldl\"}");
                     configuration = new PaymentSheet.CustomerConfiguration(
                             jsonObject.getString("customer"),
                             jsonObject.getString("ephemeralKey")
@@ -276,4 +276,3 @@ public class PayNow extends AppCompatActivity {
         return false;
     }
 }
-

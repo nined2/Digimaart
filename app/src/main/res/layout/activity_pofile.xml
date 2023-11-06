@@ -121,9 +121,9 @@
                         android:layout_marginStart="13dp"
                         android:background="@android:color/transparent"
                         android:fontFamily="@font/geomanistegular"
-                        android:text="Akshit "
                         android:textColor="@color/black"
                         android:textSize="20dp"
+                        android:text="Akshit Shah"
                         android:textStyle="normal" />
 
                 </androidx.cardview.widget.CardView>
@@ -146,9 +146,9 @@
                         android:layout_marginEnd="20dp"
                         android:drawableEnd="@drawable/baseline_email_24"
                         android:fontFamily="@font/geomanistegular"
-                        android:text="shahakshit10@gmail.com"
                         android:textColor="@color/black"
                         android:textSize="20dp"
+                        android:text="akshit@gmail.com"
                         android:textStyle="normal" />
 
                 </androidx.cardview.widget.CardView>
@@ -178,9 +178,9 @@
                             android:layout_marginEnd="20dp"
                             android:background="@android:color/transparent"
                             android:fontFamily="@font/geomanistegular"
-                            android:text="8433599878"
                             android:textColor="@color/black"
                             android:textStyle="normal"
+                            android:text="9876543210"
                             android:textSize="20dp"/>
 
 

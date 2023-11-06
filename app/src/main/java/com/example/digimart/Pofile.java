@@ -8,19 +8,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class Pofile extends AppCompatActivity implements BottomSheets.OnOkButtonClickListener {
     private CircleImageView profileImageView;
@@ -49,62 +39,50 @@ public class Pofile extends AppCompatActivity implements BottomSheets.OnOkButton
         });
 
         // Get user data from the server
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        String phoneNumber = sharedPreferences.getString("phoneno", "");
-        getUserDataFromServer(phoneNumber);
+
+        setNumber();
+        setName();
+        setMail();
     }
 
-    private void getUserDataFromServer(String phoneNumber) {
-        OkHttpClient client = new OkHttpClient();
-        String url = "http://192.168.29.53/phpdb/get_user_data.php"; // Replace with your server URL
+    private void setName() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
+        String phoneNumber = sharedPreferences.getString("phoneno", "");
 
-        RequestBody requestBody = new FormBody.Builder()
-                .add("phoneno", phoneNumber)
-                .build();
-
-        Request request = new Request.Builder()
-                .url(url)
-                .post(requestBody)
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                // Handle network error
-                e.printStackTrace();
+        String[] field = new String[1];
+        field[0] = "phoneno";
+        String[] data = new String[1];
+        data[0] = phoneNumber;
+        PutData putData = new PutData("http://192.168.137.70/phpdb/hname.php", "POST", field, data);
+        if (putData.startPut()) {
+            if (putData.onComplete()) {
+                String result = putData.getResult();
+                textname.setText(result);
             }
+        }
+    }
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    String responseData = response.body().string();
+    private void setMail() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
+        String phoneNumber = sharedPreferences.getString("phoneno", "");
 
-                    try {
-                        JSONObject json = new JSONObject(responseData);
-                        if (json.has("error")) {
-                            final String errorMessage = json.getString("error");
-                            runOnUiThread(() -> {
-                                // Handle error, e.g., show an error message
-                                textname.setText(errorMessage);
-                            });
-                        } else {
-                            final String name = json.getString("name");
-                            final String mail = json.getString("mail");
-                            final String phoneno = json.getString("phoneno");
-
-                            runOnUiThread(() -> {
-                                // Update UI with user data
-                                textname.setText(name);
-                                textmail.setText(mail);
-                                textphoneno.setText(phoneno);
-                            });
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
+        String[] field = new String[1];
+        field[0] = "phoneno";
+        String[] data = new String[1];
+        data[0] = phoneNumber;
+        PutData putData = new PutData("http://192.168.137.70/phpdb/hmail.php", "POST", field, data);
+        if (putData.startPut()) {
+            if (putData.onComplete()) {
+                String result = putData.getResult();
+                textmail.setText(result);
             }
-        });
+        }
+    }
+
+    private void setNumber(){
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
+        String phoneNumber = sharedPreferences.getString("phoneno", "");
+        textphoneno.setText(phoneNumber);
     }
 
     @Override

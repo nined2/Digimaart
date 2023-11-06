@@ -214,7 +214,7 @@ public class SignUp extends AppCompatActivity {
                 data[2] = mail;
                 data[3] = password;
 
-                PutData putData = new PutData("http://192.168.29.53/phpdb/usignup.php", "POST", field, data);
+                PutData putData = new PutData("http://192.168.137.70/phpdb/usignup.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();

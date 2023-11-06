@@ -20,7 +20,7 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 public class Home extends AppCompatActivity {
 
     ImageView orderimg, scanimg, helpimg, paymentimg;
-    TextView textVieworder, textViewscan, textViewhelp, textViewpayment;
+    TextView textVieworder, textViewscan, textViewhelp, textViewpayment,textname,textmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,11 @@ public class Home extends AppCompatActivity {
         textViewscan = findViewById(R.id.textViewscan);
         textViewhelp = findViewById(R.id.textViewhelp);
         textViewpayment = findViewById(R.id.textViewpayment);
+        textname = findViewById(R.id.textView6);
+        textmail = findViewById(R.id.textView7);
+
+        setMail();
+        setName();
 
         scanimg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,8 +55,6 @@ public class Home extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 
     private void scancode() {
@@ -63,6 +66,40 @@ public class Home extends AppCompatActivity {
             barLauncher.launch(options);
         }
 
+    private void setMail() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
+        String phoneNumber = sharedPreferences.getString("phoneno", "");
+
+        String[] field = new String[1];
+        field[0] = "phoneno";
+        String[] data = new String[1];
+        data[0] = phoneNumber;
+        PutData putData = new PutData("http://192.168.137.70/phpdb/hmail.php", "POST", field, data);
+        if (putData.startPut()) {
+            if (putData.onComplete()) {
+                String result = putData.getResult();
+                textmail.setText(result);
+            }
+        }
+    }
+
+    private void setName() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
+        String phoneNumber = sharedPreferences.getString("phoneno", "");
+
+        String[] field = new String[1];
+        field[0] = "phoneno";
+        String[] data = new String[1];
+        data[0] = phoneNumber;
+        PutData putData = new PutData("http://192.168.137.70/phpdb/hname.php", "POST", field, data);
+        if (putData.startPut()) {
+            if (putData.onComplete()) {
+                String result = putData.getResult();
+                textname.setText(result);
+            }
+        }
+    }
+
     private void sendData(){
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
         String phoneno = sharedPreferences.getString("phoneno", "");
@@ -71,7 +108,8 @@ public class Home extends AppCompatActivity {
 
         String[] data = new String[2];
         data[0] = phoneno;
-        PutData putData = new PutData("http://192.168.0.105/phpdb/usercreate.php","POST",field,data);
+        PutData putData = new PutData("http://192.168.0.104/phpdb/usercreate.php","POST",field,data);
+
     }
     ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result->
     {
@@ -113,6 +151,17 @@ public class Home extends AppCompatActivity {
 
             else {
                 Toast.makeText(getApplicationContext(), "Incorrect QR Code", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(Home.this);
+                builder.setTitle("Wrong");
+                builder.setMessage("Invalid QRCODE");
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        sendData();
+                        dialogInterface.dismiss();
+                    }
+                }).show();
             }
         }
     });

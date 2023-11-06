@@ -61,6 +61,4 @@ public class BottomRecyclerview extends RecyclerView.Adapter<BottomRecyclerview.
             imageView = itemView.findViewById(R.id.imageView);
         }
     }
-
-
 }

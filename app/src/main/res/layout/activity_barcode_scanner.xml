@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,45 +10,56 @@
 
     <Button
         android:id="@+id/btn_scan"
-        android:layout_width="wrap_content"
-        android:layout_height="74dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="54dp"
+        android:layout_width="249dp"
+        android:layout_height="73dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="38dp"
-        android:layout_marginEnd="45dp"
         android:background="#96DED1"
         android:text="Scan Object Barcode"
         android:textColorHint="#4A8DAC"
         android:textSize="20sp"
         android:textStyle="bold" />
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/productRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="460dp"
+        android:layout_above="@+id/pay_button"
         android:layout_below="@+id/btn_scan"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginBottom="45dp"
         android:divider="@android:color/darker_gray"
         android:dividerHeight="1dp"
         android:scrollbars="vertical" />
+
+
+    <TextView
+        android:id="@+id/totalAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="61dp"
+        android:layout_above="@+id/pay_button"
+        android:layout_below="@id/btn_scan"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="492dp"
+        android:layout_marginEnd="233dp"
+        android:layout_marginBottom="-7dp"
+        android:text="Total Amount: 50.00rs"
+        android:textColor="#000000"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/pay_button"
         android:layout_width="223dp"
         android:layout_height="73dp"
-        android:layout_alignStart="@+id/btn_scan"
-        android:layout_alignEnd="@+id/btn_scan"
-        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="622dp"
-        android:layout_marginEnd="47dp"
-        android:layout_marginBottom="35dp"
-        android:background="	#005b96"
+        android:layout_marginTop="16dp"
+        android:background="#005b96"
         android:text="Proceed for checkout"
         android:textColor="@color/white"
-        android:textSize="15pt"
+        android:textSize="15sp"
         tools:ignore="MissingConstraints" />
 </RelativeLayout>
