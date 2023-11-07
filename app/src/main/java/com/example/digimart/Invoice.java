@@ -1,5 +1,6 @@
 package com.example.digimart;
 
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.pdf.PdfDocument;
 import android.os.Build;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -46,6 +49,7 @@ public class Invoice extends AppCompatActivity {
         totalAmountTextView = findViewById(R.id.totalAmountTextView);
 
         // Fetch user data (name, phone, email) from your database
+
         String userName = "Akshit"; // Replace with actual user data
         String userPhone = "12345"; // Replace with actual user data
         String userEmail = "akshit@example.com"; // Replace with actual user data
@@ -79,6 +83,7 @@ public class Invoice extends AppCompatActivity {
         });
 
     }
+
     private List<Product1> getProductsFromDatabase() {
         // Replace with actual database query
         List<Product1> productList = new ArrayList<>();
@@ -96,6 +101,45 @@ public class Invoice extends AppCompatActivity {
             totalAmount += product.getPrice() * product.getQuantity();
         }
         return totalAmount;
+    }
+    private void setName() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
+        String phoneNumber = sharedPreferences.getString("phoneno", "");
+
+        String[] field = new String[1];
+        field[0] = "phoneno";
+        String[] data = new String[1];
+        data[0] = phoneNumber;
+        PutData putData = new PutData("http://172.18.0.135/phpdb/hname.php", "POST", field, data);
+        if (putData.startPut()) {
+            if (putData.onComplete()) {
+                String result = putData.getResult();
+                textname.setText(result);
+            }
+        }
+    }
+
+    private void setMail() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
+        String phoneNumber = sharedPreferences.getString("phoneno", "");
+
+        String[] field = new String[1];
+        field[0] = "phoneno";
+        String[] data = new String[1];
+        data[0] = phoneNumber;
+        PutData putData = new PutData("http://172.18.0.135/phpdb/hmail.php", "POST", field, data);
+        if (putData.startPut()) {
+            if (putData.onComplete()) {
+                String result = putData.getResult();
+                textmail.setText(result);
+            }
+        }
+    }
+
+    private void setNumber(){
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
+        String phoneNumber = sharedPreferences.getString("phoneno", "");
+        textphoneno.setText(phoneNumber);
     }
 
     private void convertXMTtoPDF() {
@@ -143,6 +187,4 @@ public class Invoice extends AppCompatActivity {
             throw new RuntimeException(e);
         }
     }
-
-    // Implement the methods for fetching products from the database and calculating the total amount.
 }

@@ -62,7 +62,7 @@ public class LOGIN2 extends AppCompatActivity {
                             String[] data = new String[2];
                             data[0] = phoneno;
                             data[1] = password;
-                            PutData putData = new PutData("http://192.168.29.53/phpdb/ulogin.php", "POST", field, data);
+                            PutData putData = new PutData("http://172.18.0.135/phpdb/ulogin.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();

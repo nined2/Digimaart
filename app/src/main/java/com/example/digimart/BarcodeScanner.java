@@ -77,7 +77,7 @@ public class BarcodeScanner extends AppCompatActivity {
 
         // Retrofit setup
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.149.212/phpdb/cart/")
+                .baseUrl("http://172.18.0.135/phpdb/cart/")
                 .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().setLenient().create()))
                 .build();
 
@@ -133,7 +133,7 @@ public class BarcodeScanner extends AppCompatActivity {
                     String[] data = new String[1];
                     data[0] = barcode;
 
-                    PutData putData = new PutData("http://192.168.149.212/phpdb/productadd.php", "POST", field, data);
+                    PutData putData = new PutData("http://172.18.0.135/phpdb/productadd.php", "POST", field, data);
                     if(putData.startPut()) {
                         if (putData.onComplete()) {
                             String str = putData.getResult();
@@ -150,8 +150,6 @@ public class BarcodeScanner extends AppCompatActivity {
             }).show();
         }
     });
-
-
 
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();

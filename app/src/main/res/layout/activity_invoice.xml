@@ -21,6 +21,11 @@
         android:textSize="20dp" />
 
     <TextView
+        android:layout_width="196dp"
+        android:layout_height="91dp"
+        />
+
+    <TextView
         android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

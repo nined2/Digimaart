@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.constraintlayout.widget.Constraints;
 
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
@@ -19,8 +21,9 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 public class Home extends AppCompatActivity {
 
-    ImageView orderimg, scanimg, helpimg, paymentimg;
+    ImageView orderimg, scanimg, helpimg, paymentimg,profile1;
     TextView textVieworder, textViewscan, textViewhelp, textViewpayment,textname,textmail;
+    Constraints profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +40,38 @@ public class Home extends AppCompatActivity {
         textViewpayment = findViewById(R.id.textViewpayment);
         textname = findViewById(R.id.textView6);
         textmail = findViewById(R.id.textView7);
+        profile1 = findViewById(R.id.imageView10);
+
 
         setMail();
         setName();
 
+        profile1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Pofile.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        textname.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Pofile.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        textmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Pofile.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         scanimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
