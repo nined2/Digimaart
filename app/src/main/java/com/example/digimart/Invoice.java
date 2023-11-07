@@ -43,19 +43,17 @@ public class Invoice extends AppCompatActivity {
         setContentView(R.layout.activity_invoice);
 
         // Initialize your views
-        userInfoTextView = findViewById(R.id.userInfoTextView);
+        textname = findViewById(R.id.name);
+        textmail = findViewById(R.id.mail);
+        textphoneno = findViewById(R.id.phoneno);
+
         dateTextView = findViewById(R.id.dateTextView);
         productListView = findViewById(R.id.productListView);
         totalAmountTextView = findViewById(R.id.totalAmountTextView);
 
-        // Fetch user data (name, phone, email) from your database
-
-        String userName = "Akshit"; // Replace with actual user data
-        String userPhone = "12345"; // Replace with actual user data
-        String userEmail = "akshit@example.com"; // Replace with actual user data
-
-        String userInfo = "User: " + userName + "\nPhone: " + userPhone + "\nEmail: " + userEmail;
-        userInfoTextView.setText(userInfo);
+        setMail();
+        setName();
+        setNumber();
 
         // Populate date and time
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
@@ -104,42 +102,42 @@ public class Invoice extends AppCompatActivity {
     }
     private void setName() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
-        String phoneNumber = sharedPreferences.getString("phoneno", "");
+        String phoneNumber = "12345";
 
         String[] field = new String[1];
         field[0] = "phoneno";
         String[] data = new String[1];
         data[0] = phoneNumber;
-        PutData putData = new PutData("http://172.18.0.135/phpdb/hname.php", "POST", field, data);
+        PutData putData = new PutData("http://192.168.0.104/phpdb/hname.php", "POST", field, data);
         if (putData.startPut()) {
             if (putData.onComplete()) {
                 String result = putData.getResult();
-                textname.setText(result);
+                textname.setText("Name: " + result);
             }
         }
     }
 
     private void setMail() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
-        String phoneNumber = sharedPreferences.getString("phoneno", "");
+        String phoneNumber = "12345";
 
         String[] field = new String[1];
         field[0] = "phoneno";
         String[] data = new String[1];
         data[0] = phoneNumber;
-        PutData putData = new PutData("http://172.18.0.135/phpdb/hmail.php", "POST", field, data);
+        PutData putData = new PutData("http://192.168.0.104/phpdb/hmail.php", "POST", field, data);
         if (putData.startPut()) {
             if (putData.onComplete()) {
                 String result = putData.getResult();
-                textmail.setText(result);
+                textmail.setText("Email: " + result);
             }
         }
     }
 
     private void setNumber(){
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
-        String phoneNumber = sharedPreferences.getString("phoneno", "");
-        textphoneno.setText(phoneNumber);
+        String phoneNumber = "12345";
+        textphoneno.setText("Phone no.:" + phoneNumber);
     }
 
     private void convertXMTtoPDF() {
@@ -176,6 +174,8 @@ public class Invoice extends AppCompatActivity {
         File file = new File(DownloadsDir, fileName);
         try {
             FileOutputStream fos = new FileOutputStream(file);
+
+
             document.writeTo(fos);
             document.close();
             fos.close();

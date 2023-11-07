@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#e2ece0">
 
     <!-- User Information -->
 
@@ -13,57 +15,66 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textinvoice"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="111dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="104dp"
-        android:text="User Information"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="206dp"
+        android:text="Name"
         android:textSize="20dp" />
 
     <TextView
         android:id="@+id/phoneno"
-        android:layout_width="180dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/userInfoTextView"
-        android:layout_alignStart="@+id/userInfoTextView"
-        android:layout_alignEnd="@+id/userInfoTextView"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="50dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_alignStart="@+id/name"
+        android:layout_alignEnd="@+id/name"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="208dp"
+        android:text="phoneno"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/mail"
-        android:layout_width="180dp"
-        android:layout_height="30dp"
-        android:layout_alignStart="@+id/userInfoTextView"
-        android:layout_alignTop="@+id/dateTextView"
-        android:layout_alignEnd="@+id/userInfoTextView"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="-26dp"
-        android:layout_marginEnd="3dp" />
+        android:layout_width="265dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/phoneno"
+        android:layout_alignStart="@+id/phoneno"
+        android:layout_alignEnd="@+id/phoneno"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="134dp"
+        android:text="Email"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/dateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/userInfoTextView"
-        android:layout_alignStart="@+id/userInfoTextView"
-        android:layout_alignEnd="@+id/userInfoTextView"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="62dp"
-        android:layout_marginEnd="50dp"
+        android:layout_width="268dp"
+        android:layout_height="36dp"
+        android:layout_below="@+id/mail"
+        android:layout_alignStart="@+id/mail"
+        android:layout_alignEnd="@+id/mail"
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="1dp"
         android:text="Date and Time" />
 
     <ListView
         android:id="@+id/productListView"
-        android:layout_width="382dp"
-        android:layout_height="wrap_content"
+        android:layout_width="366dp"
+        android:layout_height="423dp"
         android:layout_above="@+id/generatePDFButton"
-        android:layout_below="@id/dateTextView"
+        android:layout_below="@+id/dateTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="43dp"
         android:layout_marginBottom="41dp" />
 
     <!-- Total Amount -->
@@ -74,7 +85,6 @@
         android:id="@+id/totalAmountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/userInfoTextView"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
@@ -92,4 +102,31 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="154dp"
+        android:layout_height="141dp"
+        android:layout_below="@+id/textinvoice"
+        android:layout_alignStart="@+id/name"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="-13dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="548dp"
+        app:srcCompat="@drawable/applogo" />
+
+    <TextView
+        android:id="@+id/textinvoice"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="Invoice/Bill"
+        android:textColor="@color/black"
+        android:textSize="45dp"
+        android:textStyle="bold" />
 </RelativeLayout>
