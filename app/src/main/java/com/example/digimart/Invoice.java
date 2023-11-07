@@ -33,7 +33,7 @@ import java.util.Locale;
 public class Invoice extends AppCompatActivity {
 
     private ListView productListView;
-    private TextView userInfoTextView, dateTextView, totalAmountTextView;
+    private TextView textname,textphoneno,textmail, dateTextView, totalAmountTextView;
     private Button btnXMLtoPDF;
     private List<Product1> productList; // Replace with your product data structure
 
