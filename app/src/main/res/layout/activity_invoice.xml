@@ -4,14 +4,22 @@
     android:layout_height="match_parent">
 
     <!-- User Information -->
-    <TextView
-        android:id="@+id/userInfoTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User Information"
-        android:layout_centerHorizontal="true" />
 
     <!-- Date and Time -->
+
+    <TextView
+        android:id="@+id/userInfoTextView"
+        android:layout_width="196dp"
+        android:layout_height="91dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="108dp"
+        android:text="User Information"
+        android:textSize="20dp" />
+
     <TextView
         android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
@@ -24,25 +32,32 @@
     <!-- Product List -->
     <ListView
         android:id="@+id/productListView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="382dp"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/generatePDFButton"
         android:layout_below="@id/dateTextView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="41dp" />
 
     <!-- Total Amount -->
+
+    <!-- Generate PDF Button -->
+
     <TextView
         android:id="@+id/totalAmountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total Amount: $0.00"
-        android:layout_below="@+id/productListView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_below="@+id/userInfoTextView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="607dp"
+        android:layout_marginEnd="268dp"
+        android:layout_marginBottom="78dp"
+        android:text="Total Amount: $0.00" />
 
-    <!-- Generate PDF Button -->
     <Button
         android:id="@+id/generatePDFButton"
         android:layout_width="171dp"

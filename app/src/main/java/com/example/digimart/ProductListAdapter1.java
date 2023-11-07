@@ -51,7 +51,7 @@ public class ProductListAdapter1 extends BaseAdapter {
         TextView productQuantityTextView = view.findViewById(R.id.productQuantityTextView);
 
         productNameTextView.setText(product.getName());
-        productPriceTextView.setText("$" + product.getPrice());
+        productPriceTextView.setText(product.getPrice() + "rs");
         productQuantityTextView.setText("Quantity: " + product.getQuantity());
 
         return view;
