@@ -37,6 +37,7 @@ public class Invoice extends AppCompatActivity {
     private Button btnXMLtoPDF;
     private List<Product1> productList; // Replace with your product data structure
 
+    View invoice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +49,7 @@ public class Invoice extends AppCompatActivity {
         textphoneno = findViewById(R.id.phoneno);
         textitem = findViewById(R.id.item);
 
+        invoice = findViewById(R.id.invoice);
         dateTextView = findViewById(R.id.dateTextView);
         productListView = findViewById(R.id.productListView);
         totalAmountTextView = findViewById(R.id.totalAmountTextView);
@@ -160,50 +162,42 @@ public class Invoice extends AppCompatActivity {
     }
 
     private void convertXMTtoPDF() {
-        //Inflate the layout that you want to convert to pdf
-        View view = LayoutInflater.from(this).inflate(R.layout.activity_main, null);
-        DisplayMetrics displayMetrics = new DisplayMetrics();
+        // Get the view you want to convert to a PDF
+        View view = findViewById(R.id.invoice); // Replace with your view's ID
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) { //for device version is less use this or use else
-            this.getDisplay().getRealMetrics(displayMetrics);
-        } else this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        view.measure(View.MeasureSpec.makeMeasureSpec(displayMetrics.widthPixels, View.MeasureSpec.EXACTLY),
-                View.MeasureSpec.makeMeasureSpec(displayMetrics.heightPixels, View.MeasureSpec.EXACTLY));
-        view.layout(0, 0, displayMetrics.widthPixels, displayMetrics.heightPixels);
-
-
+        // Create a PdfDocument
         PdfDocument document = new PdfDocument();
-        int viewWidth = view.getMeasuredWidth();
-        int viewHeight = view.getMeasuredHeight();
-        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(viewWidth, viewHeight, 1).create();
+
+        // Create a PageInfo
+        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(view.getWidth(), view.getHeight(), 1).create();
+
+        // Start a page
         PdfDocument.Page page = document.startPage(pageInfo);
 
-        Log.d("mylog", "View Width:  " + viewWidth);
-        Log.d("mylog", "View Height:" + viewHeight);
-
-        //Canvas
+        // Draw the view on the page
         Canvas canvas = page.getCanvas();
         view.draw(canvas);
 
-        //finish page
+        // Finish the page
         document.finishPage(page);
 
-        File DownloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        String fileName = "Invoice.pdf";
-        File file = new File(DownloadsDir, fileName);
+        // Define the file where the PDF will be saved
+        File file = new File(Environment.getExternalStorageDirectory(), "my_pdf_file.pdf"); // Adjust the file path as needed
+
         try {
+            // Create a FileOutputStream
             FileOutputStream fos = new FileOutputStream(file);
 
-
+            // Write the PDF document to the FileOutputStream
             document.writeTo(fos);
-            document.close();
+
+            // Close the FileOutputStream
             fos.close();
-            Toast.makeText(this, "Converted XML to PDF Sucessfully", Toast.LENGTH_SHORT).show();
-        } catch (FileNotFoundException e) {
-            Log.d("mylog", "Error while writing " + e.toString());
-            throw new RuntimeException(e);
+
+            // Close the PdfDocument
+            document.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }

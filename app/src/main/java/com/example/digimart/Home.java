@@ -21,8 +21,8 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 public class Home extends AppCompatActivity {
 
-    ImageView orderimg, scanimg, helpimg, paymentimg,profile1;
-    TextView textVieworder, textViewscan, textViewhelp, textViewpayment,textname,textmail;
+    ImageView orderimg, scanimg, helpimg, trolleyimg,profile1;
+    TextView textVieworder, textViewscan, textViewhelp, textViewtrolley,textname,textmail;
     Constraints profile;
 
     @Override
@@ -32,20 +32,38 @@ public class Home extends AppCompatActivity {
         orderimg = findViewById(R.id.orderimg);
         scanimg = findViewById(R.id.scanimg);
         helpimg = findViewById(R.id.helpimg);
-        paymentimg = findViewById(R.id.paymentimg);
+        trolleyimg = findViewById(R.id.trolleyimg);
 
         textVieworder = findViewById(R.id.textVieworder);
         textViewscan = findViewById(R.id.textViewscan);
         textViewhelp = findViewById(R.id.textViewhelp);
-        textViewpayment = findViewById(R.id.textViewpayment);
+        textViewtrolley= findViewById(R.id.textViewtrolley);
         textname = findViewById(R.id.textView6);
         textmail = findViewById(R.id.textView7);
         profile1 = findViewById(R.id.imageView10);
-
+        String str;
 
         setMail();
         setName();
 
+        trolleyimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(),BarcodeScanner.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        textViewtrolley.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),BarcodeScanner.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         profile1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

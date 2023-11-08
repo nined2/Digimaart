@@ -91,9 +91,6 @@ public class BarcodeScanner extends AppCompatActivity {
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 if (response.isSuccessful()) {
                     List<Product> products = response.body();
-                    Intent intent = new Intent(getApplicationContext(), Invoice.class);
-                    startActivity(intent);
-                    finish();
 
                     if (products != null) {
                         productAdapter.setProducts(products);
