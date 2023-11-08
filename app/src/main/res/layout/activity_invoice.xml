@@ -67,6 +67,19 @@
         android:layout_marginEnd="1dp"
         android:text="Date and Time" />
 
+    <TextView
+        android:id="@+id/item"
+        android:layout_width="268dp"
+        android:layout_height="36dp"
+        android:layout_below="@+id/mail"
+        android:layout_alignStart="@+id/mail"
+        android:layout_alignEnd="@+id/mail"
+        android:layout_marginStart="-4dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="2dp"
+        android:text="Total items"
+        android:textSize="17dp"/>
+
     <ListView
         android:id="@+id/productListView"
         android:layout_width="366dp"

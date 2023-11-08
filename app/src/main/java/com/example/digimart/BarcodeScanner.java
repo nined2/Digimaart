@@ -7,7 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.ComponentActivity;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -89,6 +91,10 @@ public class BarcodeScanner extends AppCompatActivity {
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 if (response.isSuccessful()) {
                     List<Product> products = response.body();
+                    Intent intent = new Intent(getApplicationContext(), Invoice.class);
+                    startActivity(intent);
+                    finish();
+
                     if (products != null) {
                         productAdapter.setProducts(products);
                     } else {
@@ -103,6 +109,8 @@ public class BarcodeScanner extends AppCompatActivity {
                 Log.e("NetworkError", "Network error: " + t.getMessage());
             }
         });
+
+
     }
 
 
@@ -118,7 +126,6 @@ public class BarcodeScanner extends AppCompatActivity {
     ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result->
     {
         if(result.getContents() != null) {
-
 
             AlertDialog.Builder builder = new AlertDialog.Builder(BarcodeScanner.this);
             builder.setTitle("Result");
@@ -153,5 +160,26 @@ public class BarcodeScanner extends AppCompatActivity {
 
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Get the OnBackPressedDispatcher
+        OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
+
+        // Create an OnBackPressedCallback to handle the back button press
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent intent = new Intent(getApplicationContext(), Home.class);
+                startActivity(intent);
+                finish();
+            }
+        };
+
+        // Add the callback to the OnBackPressedDispatcher
+        onBackPressedDispatcher.addCallback(this, callback);
     }
 }

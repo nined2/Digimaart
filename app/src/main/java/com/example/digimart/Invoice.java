@@ -33,7 +33,7 @@ import java.util.Locale;
 public class Invoice extends AppCompatActivity {
 
     private ListView productListView;
-    private TextView textname,textphoneno,textmail, dateTextView, totalAmountTextView;
+    private TextView textname,textphoneno,textmail,textitem, dateTextView, totalAmountTextView;
     private Button btnXMLtoPDF;
     private List<Product1> productList; // Replace with your product data structure
 
@@ -46,6 +46,7 @@ public class Invoice extends AppCompatActivity {
         textname = findViewById(R.id.name);
         textmail = findViewById(R.id.mail);
         textphoneno = findViewById(R.id.phoneno);
+        textitem = findViewById(R.id.item);
 
         dateTextView = findViewById(R.id.dateTextView);
         productListView = findViewById(R.id.productListView);
@@ -54,6 +55,7 @@ public class Invoice extends AppCompatActivity {
         setMail();
         setName();
         setNumber();
+        setItem();
 
         // Populate date and time
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
@@ -102,13 +104,13 @@ public class Invoice extends AppCompatActivity {
     }
     private void setName() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
-        String phoneNumber = "12345";
+        String phoneNumber = sharedPreferences.getString("phoneno", "");
 
         String[] field = new String[1];
         field[0] = "phoneno";
         String[] data = new String[1];
         data[0] = phoneNumber;
-        PutData putData = new PutData("http://192.168.0.104/phpdb/hname.php", "POST", field, data);
+        PutData putData = new PutData("http://172.18.0.135/phpdb/hname.php", "POST", field, data);
         if (putData.startPut()) {
             if (putData.onComplete()) {
                 String result = putData.getResult();
@@ -119,13 +121,13 @@ public class Invoice extends AppCompatActivity {
 
     private void setMail() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
-        String phoneNumber = "12345";
+        String phoneNumber = sharedPreferences.getString("phoneno", "");
 
         String[] field = new String[1];
         field[0] = "phoneno";
         String[] data = new String[1];
         data[0] = phoneNumber;
-        PutData putData = new PutData("http://192.168.0.104/phpdb/hmail.php", "POST", field, data);
+        PutData putData = new PutData("http://172.18.0.135/phpdb/hmail.php", "POST", field, data);
         if (putData.startPut()) {
             if (putData.onComplete()) {
                 String result = putData.getResult();
@@ -136,8 +138,25 @@ public class Invoice extends AppCompatActivity {
 
     private void setNumber(){
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
-        String phoneNumber = "12345";
+        String phoneNumber = sharedPreferences.getString("phoneno", "");
         textphoneno.setText("Phone no.:" + phoneNumber);
+    }
+
+    private void setItem() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
+        String phoneNumber = sharedPreferences.getString("phoneno", "");
+
+        String[] field = new String[1];
+        field[0] = "phoneno";
+        String[] data = new String[1];
+        data[0] = phoneNumber;
+        PutData putData = new PutData("http://172.18.0.135/phpdb/total_items.php", "POST", field, data);
+        if (putData.startPut()) {
+            if (putData.onComplete()) {
+                String result = putData.getResult();
+                textitem.setText("Total Items: " + result);
+            }
+        }
     }
 
     private void convertXMTtoPDF() {
@@ -170,7 +189,7 @@ public class Invoice extends AppCompatActivity {
         document.finishPage(page);
 
         File DownloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        String fileName = "exampleXML.pdf";
+        String fileName = "Invoice.pdf";
         File file = new File(DownloadsDir, fileName);
         try {
             FileOutputStream fos = new FileOutputStream(file);

@@ -63,7 +63,7 @@
                     android:layout_marginStart="4dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/business" />
+                    app:srcCompat="@drawable/human" />
 
                 <TextView
                     android:id="@+id/textView6"
@@ -281,8 +281,7 @@
                             android:layout_width="75dp"
                             android:layout_height="75dp"
                             android:layout_gravity="center_horizontal"
-                            android:layout_margin="8dp"
-                            >
+                            android:layout_margin="8dp">
 
                             <ImageView
                                 android:id="@+id/paymentimg"
@@ -306,7 +305,7 @@
                                 android:layout_height="28dp"
                                 android:background="@drawable/bakcground_btn_grey"
                                 android:fontFamily="@font/geomanistegular"
-                                android:text="       CART"
+                                android:text="    TROLLEY"
                                 android:textColor="#151313"
                                 android:textSize="20sp"
                                 android:textStyle="bold"

@@ -1,11 +1,14 @@
 package com.example.digimart;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
@@ -95,5 +98,25 @@ public class Pofile extends AppCompatActivity implements BottomSheets.OnOkButton
         editor.apply();
 
         profileImageView.setImageResource(imageResId);
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Get the OnBackPressedDispatcher
+        OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
+
+        // Create an OnBackPressedCallback to handle the back button press
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent intent = new Intent(getApplicationContext(), Home.class);
+                startActivity(intent);
+                finish();
+            }
+        };
+
+        // Add the callback to the OnBackPressedDispatcher
+        onBackPressedDispatcher.addCallback(this, callback);
     }
 }
