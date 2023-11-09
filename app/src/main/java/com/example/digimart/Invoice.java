@@ -33,11 +33,10 @@ import java.util.Locale;
 public class Invoice extends AppCompatActivity {
 
     private ListView productListView;
-    private TextView textname,textphoneno,textmail,textitem, dateTextView, totalAmountTextView;
+    private TextView textname, textphoneno, textmail, dateTextView, totalAmountTextView;
     private Button btnXMLtoPDF;
     private List<Product1> productList; // Replace with your product data structure
 
-    View invoice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,9 +46,7 @@ public class Invoice extends AppCompatActivity {
         textname = findViewById(R.id.name);
         textmail = findViewById(R.id.mail);
         textphoneno = findViewById(R.id.phoneno);
-        textitem = findViewById(R.id.item);
 
-        invoice = findViewById(R.id.invoice);
         dateTextView = findViewById(R.id.dateTextView);
         productListView = findViewById(R.id.productListView);
         totalAmountTextView = findViewById(R.id.totalAmountTextView);
@@ -57,7 +54,6 @@ public class Invoice extends AppCompatActivity {
         setMail();
         setName();
         setNumber();
-        setItem();
 
         // Populate date and time
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
@@ -80,7 +76,7 @@ public class Invoice extends AppCompatActivity {
         btnXMLtoPDF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                convertXMTtoPDF();
+                convertXMLtoPDF();
             }
         });
 
@@ -104,15 +100,16 @@ public class Invoice extends AppCompatActivity {
         }
         return totalAmount;
     }
+
     private void setName() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
-        String phoneNumber = sharedPreferences.getString("phoneno", "");
+        String phoneNumber = "12345";
 
         String[] field = new String[1];
         field[0] = "phoneno";
         String[] data = new String[1];
         data[0] = phoneNumber;
-        PutData putData = new PutData("http://172.18.0.135/phpdb/hname.php", "POST", field, data);
+        PutData putData = new PutData("http://192.168.254.212/phpdb/hname.php", "POST", field, data);
         if (putData.startPut()) {
             if (putData.onComplete()) {
                 String result = putData.getResult();
@@ -123,13 +120,13 @@ public class Invoice extends AppCompatActivity {
 
     private void setMail() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
-        String phoneNumber = sharedPreferences.getString("phoneno", "");
+        String phoneNumber = "12345";
 
         String[] field = new String[1];
         field[0] = "phoneno";
         String[] data = new String[1];
         data[0] = phoneNumber;
-        PutData putData = new PutData("http://172.18.0.135/phpdb/hmail.php", "POST", field, data);
+        PutData putData = new PutData("http://192.168.254.212/phpdb/hmail.php", "POST", field, data);
         if (putData.startPut()) {
             if (putData.onComplete()) {
                 String result = putData.getResult();
@@ -138,66 +135,62 @@ public class Invoice extends AppCompatActivity {
         }
     }
 
-    private void setNumber(){
+    private void setNumber() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
-        String phoneNumber = sharedPreferences.getString("phoneno", "");
+        String phoneNumber = "12345";
         textphoneno.setText("Phone no.:" + phoneNumber);
     }
 
-    private void setItem() {
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
-        String phoneNumber = sharedPreferences.getString("phoneno", "");
+    private void convertXMLtoPDF() {
+        // Inflate the layout you want to convert to PDF
+        View view = LayoutInflater.from(this).inflate(R.layout.activity_invoice, null);
 
-        String[] field = new String[1];
-        field[0] = "phoneno";
-        String[] data = new String[1];
-        data[0] = phoneNumber;
-        PutData putData = new PutData("http://172.18.0.135/phpdb/total_items.php", "POST", field, data);
-        if (putData.startPut()) {
-            if (putData.onComplete()) {
-                String result = putData.getResult();
-                textitem.setText("Total Items: " + result);
-            }
+        // Measure and layout the view
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            this.getDisplay().getRealMetrics(displayMetrics);
+        } else {
+            this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         }
-    }
 
-    private void convertXMTtoPDF() {
-        // Get the view you want to convert to a PDF
-        View view = findViewById(R.id.invoice); // Replace with your view's ID
+        view.measure(View.MeasureSpec.makeMeasureSpec(displayMetrics.widthPixels, View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(displayMetrics.heightPixels, View.MeasureSpec.EXACTLY));
+        view.layout(0, 0, displayMetrics.widthPixels, view.getMeasuredHeight());
 
-        // Create a PdfDocument
+        // Create a PDF document
         PdfDocument document = new PdfDocument();
-
-        // Create a PageInfo
-        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(view.getWidth(), view.getHeight(), 1).create();
-
-        // Start a page
+        int viewWidth = view.getMeasuredWidth();
+        int viewHeight = view.getMeasuredHeight();
+        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(viewWidth, viewHeight, 1).create();
         PdfDocument.Page page = document.startPage(pageInfo);
 
-        // Draw the view on the page
+        // Get the canvas
         Canvas canvas = page.getCanvas();
+
+        // Draw the entire view onto the canvas
         view.draw(canvas);
 
         // Finish the page
         document.finishPage(page);
 
-        // Define the file where the PDF will be saved
-        File file = new File(Environment.getExternalStorageDirectory(), "my_pdf_file.pdf"); // Adjust the file path as needed
-
+        // Create the PDF file
+        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        String fileName = "BillInvoice.pdf";
+        File file = new File(downloadsDir, fileName);
         try {
-            // Create a FileOutputStream
             FileOutputStream fos = new FileOutputStream(file);
 
-            // Write the PDF document to the FileOutputStream
+            // Write the document to the file
             document.writeTo(fos);
-
-            // Close the FileOutputStream
-            fos.close();
-
-            // Close the PdfDocument
             document.close();
+            fos.close();
+            Toast.makeText(this, "Converted XML to PDF Successfully and saved in Downloads", Toast.LENGTH_SHORT).show();
+        } catch (FileNotFoundException e) {
+            Log.d("mylog", "Error while writing " + e.toString());
+            throw new RuntimeException(e);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }

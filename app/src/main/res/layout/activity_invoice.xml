@@ -6,11 +6,6 @@
     android:background="#e2ece0"
     android:id="@+id/invoice">
 
-    <!-- User Information -->
-
-    <!-- Date and Time -->
-
-    <!-- Product List -->
 
     <TextView
         android:id="@+id/name"

@@ -151,6 +151,7 @@ public class SignUp extends AppCompatActivity {
                                                             saveUserDataToDatabase(name, phoneno, mail, password);
                                                         } else {
                                                             // Handle verification failure
+                                                            Log.e("VerificationFailed", "Verification failed: " + task.getException());
                                                             Toast.makeText(getApplicationContext(), "Verification failed.", Toast.LENGTH_SHORT).show();
                                                         }
                                                     }

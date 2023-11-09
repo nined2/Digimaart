@@ -12,7 +12,6 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.constraintlayout.widget.Constraints;
 
 import com.journeyapps.barcodescanner.ScanContract;
@@ -24,6 +23,7 @@ public class Home extends AppCompatActivity {
     ImageView orderimg, scanimg, helpimg, trolleyimg,profile1;
     TextView textVieworder, textViewscan, textViewhelp, textViewtrolley,textname,textmail;
     Constraints profile;
+    View order,scan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class Home extends AppCompatActivity {
         scanimg = findViewById(R.id.scanimg);
         helpimg = findViewById(R.id.helpimg);
         trolleyimg = findViewById(R.id.trolleyimg);
-
+        order = findViewById(R.id.orderlayout);
         textVieworder = findViewById(R.id.textVieworder);
         textViewscan = findViewById(R.id.textViewscan);
         textViewhelp = findViewById(R.id.textViewhelp);
@@ -41,6 +41,8 @@ public class Home extends AppCompatActivity {
         textname = findViewById(R.id.textView6);
         textmail = findViewById(R.id.textView7);
         profile1 = findViewById(R.id.imageView10);
+        scan = findViewById(R.id.scanlayout);
+
         String str;
 
         setMail();
@@ -90,20 +92,13 @@ public class Home extends AppCompatActivity {
                 finish();
             }
         });
-        scanimg.setOnClickListener(new View.OnClickListener() {
+        scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 scancode();
             }
         });
-        textViewscan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),QRCodeScanner.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+
     }
 
     private void scancode() {
@@ -123,7 +118,7 @@ public class Home extends AppCompatActivity {
         field[0] = "phoneno";
         String[] data = new String[1];
         data[0] = phoneNumber;
-        PutData putData = new PutData("http://172.18.0.135/phpdb/hmail.php", "POST", field, data);
+        PutData putData = new PutData("http://192.168.0.105/phpdb/hmail.php", "POST", field, data);
         if (putData.startPut()) {
             if (putData.onComplete()) {
                 String result = putData.getResult();
@@ -140,7 +135,7 @@ public class Home extends AppCompatActivity {
         field[0] = "phoneno";
         String[] data = new String[1];
         data[0] = phoneNumber;
-        PutData putData = new PutData("http://172.18.0.135/phpdb/hname.php", "POST", field, data);
+        PutData putData = new PutData("http://192.168.0.105/phpdb/hname.php", "POST", field, data);
         if (putData.startPut()) {
             if (putData.onComplete()) {
                 String result = putData.getResult();
@@ -157,7 +152,7 @@ public class Home extends AppCompatActivity {
 
         String[] data = new String[2];
         data[0] = phoneno;
-        PutData putData = new PutData("http://172.18.0.135/phpdb/usercreate.php","POST",field,data);
+        PutData putData = new PutData("http://192.168.0.105/phpdb/usercreate.php","POST",field,data);
 
     }
     ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result->

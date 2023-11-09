@@ -62,7 +62,7 @@ public class LOGIN2 extends AppCompatActivity {
                             String[] data = new String[2];
                             data[0] = phoneno;
                             data[1] = password;
-                            PutData putData = new PutData("http://172.18.0.135/phpdb/ulogin.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.254.212/phpdb/ulogin.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
@@ -75,7 +75,7 @@ public class LOGIN2 extends AppCompatActivity {
                                         editor.apply();
 
                                         Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getApplicationContext(), Home.class);
+                                            Intent intent = new Intent(getApplicationContext(), Invoice.class);
                                         startActivity(intent);
                                         finish();
 
