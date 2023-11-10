@@ -7,8 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
 import androidx.activity.OnBackPressedCallback;
-import androidx.activity.ComponentActivity;
 import androidx.activity.OnBackPressedDispatcher;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AlertDialog;
@@ -16,25 +16,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.gson.GsonBuilder;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
-import com.stripe.android.PaymentConfiguration;
 import com.stripe.android.paymentsheet.PaymentSheet;
-import com.stripe.android.paymentsheet.PaymentSheetResult;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -79,7 +67,7 @@ public class BarcodeScanner extends AppCompatActivity {
 
         // Retrofit setup
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://172.18.0.135/phpdb/cart/")
+                .baseUrl("http://192.168.0.105/phpdb/cart/")
                 .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().setLenient().create()))
                 .build();
 
@@ -137,7 +125,7 @@ public class BarcodeScanner extends AppCompatActivity {
                     String[] data = new String[1];
                     data[0] = barcode;
 
-                    PutData putData = new PutData("http://172.18.0.135/phpdb/productadd.php", "POST", field, data);
+                    PutData putData = new PutData("http://192.168.0.105/phpdb/productadd.php", "POST", field, data);
                     if(putData.startPut()) {
                         if (putData.onComplete()) {
                             String str = putData.getResult();

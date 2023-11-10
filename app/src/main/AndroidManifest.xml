@@ -58,17 +58,17 @@
         <activity
             android:name=".BarcodeScanner"
             android:exported="true" >
-
-        </activity>
-        <activity
-            android:name=".LOGIN2"
-            android:exported="true"
-            android:theme="@style/Theme.Digimart" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".LOGIN2"
+            android:exported="true"
+            android:theme="@style/Theme.Digimart" >
+
         </activity>
         <activity
             android:name=".SignUp"

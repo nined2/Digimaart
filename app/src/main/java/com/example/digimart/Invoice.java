@@ -136,7 +136,7 @@ public class Invoice extends AppCompatActivity {
     }
 
     private void setNumber() {
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile", 0);
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefsFile",  0);
         String phoneNumber = "12345";
         textphoneno.setText("Phone no.:" + phoneNumber);
     }
